@@ -2,7 +2,7 @@
 
 ## Description
 
-Bratzche is a social media platform that seeks to encourage reflection, debate and connection between people with different ideas and perspectives.
+Bratzche is a social media platform that seeks to encourage reflection, debate and connection between people with different ideas and perspectives. Outside tecnofeudalism
 
 ## Goal
 
@@ -48,12 +48,11 @@ This project is under the MIT license.
 
 ## Contact
 
-For more information or to contact the Bratzche team, please send an email to [your email].
+For more information or to contact the Bratzche team, please send an email to zzzzabdi@icloud.com
 
 ## Project Status
 
 In active development.
 
 ## Última Actualización
-
-[Fecha de hoy]
+01-28-25
