@@ -1,2 +1,59 @@
-# bratzche
-bratzche no es solo un espacio. Es un grito. Es un registro de ideas, pensamientos y contradicciones. Es la búsqueda de un significado en un mundo que no lo tiene, pero que aún así nos desafía a dejar una marca. A resistir. Aquí no hay certezas absolutas, solo caminos que se cruzan entre la filosofía, la música, la cultura, la ciencia, el arte.
+# Bratzche
+
+## Description
+
+Bratzche is a social media platform that seeks to encourage reflection, debate and connection between people with different ideas and perspectives.
+
+## Goal
+
+Create an online space where people can share their thoughts, discuss current issues and connect with others in a meaningful way.
+
+## Project Structure
+
+* Home page with welcome section and navigation
+
+* "Reflect and discover with us" section with inspiring content
+
+* Discussion forum for debates and conversations
+
+* Library of texts and resources for continuous learning
+
+## Technologies Used
+
+* HTML5
+
+* CSS3
+
+* JavaScript
+
+* React (frontend framework)
+
+* Node.js
+
+* Express.js (backend framework)
+
+* MongoDB (NoSQL database)
+
+* Google Cloud Platform (cloud hosting)
+
+* GitHub (code versioning)
+
+## Contributions
+
+Contributions are welcome. Please read our contribution guidelines before sending your pull request.
+
+## License
+
+This project is under the MIT license.
+
+## Contact
+
+For more information or to contact the Bratzche team, please send an email to [your email].
+
+## Project Status
+
+In active development.
+
+## Última Actualización
+
+[Fecha de hoy]
