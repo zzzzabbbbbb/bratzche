@@ -1,66 +1,59 @@
-// Bratzche v0.1
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-const cors = require('cors');
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+# Bratzche
 
-// Conexión a MongoDB
-mongoose.connect('mongodb://localhost/bratzche', { useNewUrlParser: true, useUnifiedTopology: true });
+## Description
 
-// Middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+Bratzche is a social media platform that seeks to encourage reflection, debate and connection between people with different ideas and perspectives.
 
-// Modelo de usuario
-const userSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  password: String,
-  role: String
-});
+## Goal
 
-const User = mongoose.model('User', userSchema);
+Create an online space where people can share their thoughts, discuss current issues and connect with others in a meaningful way.
 
-// Modelo de publicación
-const postSchema = new mongoose.Schema({
-  title: String,
-  content: String,
-  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
-});
+## Project Structure
 
-const Post = mongoose.model('Post', postSchema);
+* Home page with welcome section and navigation
 
-// Modelo de comentario
-const commentSchema = new mongoose.Schema({
-  content: String,
-  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  post: { type: mongoose.Schema.Types.ObjectId, ref: 'Post' }
-});
+* "Reflect and discover with us" section with inspiring content
 
-const Comment = mongoose.model('Comment', commentSchema);
+* Discussion forum for debates and conversations
 
-// Modelo de categoría
-const categorySchema = new mongoose.Schema({
-  name: String,
-  posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
-});
+* Library of texts and resources for continuous learning
 
-const Category = mongoose.model('Category', categorySchema);
+## Technologies Used
 
-// Rutas de autenticación
-app.post('/api/register', async (req, res) => {
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
-  const user = new User({ name: req.body.name, email: req.body.email, password: hashedPassword, role: 'user' });
-  await user.save();
-  res.json({ message: 'Usuario registrado correctamente' });
-});
+* HTML5
 
-app.post('/api/login', async (req, res) => {
-  const user = await User.findOne({ email: req.body.email });
-  if (!user) return res.status(401).json({ message
+* CSS3
+
+* JavaScript
+
+* React (frontend framework)
+
+* Node.js
+
+* Express.js (backend framework)
+
+* MongoDB (NoSQL database)
+
+* Google Cloud Platform (cloud hosting)
+
+* GitHub (code versioning)
+
+## Contributions
+
+Contributions are welcome. Please read our contribution guidelines before sending your pull request.
+
+## License
+
+This project is under the MIT license.
+
+## Contact
+
+For more information or to contact the Bratzche team, please send an email to zzzzabdi@icloud.cim
+
+## Project Status
+
+In active development.
+
+## Last Update
+
+01-28-2025
