@@ -19,7 +19,7 @@ Create an online space where people can share their thoughts, discuss current is
 * Library of texts and resources for continuous learning
 
 ## Technologies Used
-*SWIFT
+* SWIFT
 
 * HTML5
 
