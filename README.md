@@ -19,6 +19,7 @@ Create an online space where people can share their thoughts, discuss current is
 * Library of texts and resources for continuous learning
 
 ## Technologies Used
+*SWIFT
 
 * HTML5
 
@@ -48,7 +49,7 @@ This project is under the MIT license.
 
 ## Contact
 
-For more information or to contact the Bratzche team, please send an email to zzzzabdi@icloud.cim
+For more information or to contact the Bratzche team, please send an email to zzzzabdi@icloud.com
 
 ## Project Status
 
@@ -56,4 +57,4 @@ In active development.
 
 ## Last Update
 
-01-28-2025
+01-30-2025
