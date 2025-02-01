@@ -51,6 +51,7 @@ This project is under the MIT license.
 
 For more information or to contact the Bratzche team, please send an email to zzzzabdi@icloud.com
 
+
 ## Project Status
 
 In active development.
@@ -58,3 +59,6 @@ In active development.
 ## Last Update
 
 01-30-2025
+
+
+<img width="1709" alt="Screenshot 2025-02-01 at 5 45 11 PM" src="https://github.com/user-attachments/assets/417a7f2f-ffb5-498f-8aef-a9e3d01b1ad0" />
