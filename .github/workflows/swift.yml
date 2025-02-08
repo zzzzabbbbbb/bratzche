@@ -20,7 +20,13 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test -v
-            - name: Setup Node.js environment
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4.2.0
+      with:
+        always-auth: false
+        node-version: '14'
+        check-latest: true
+        cache: 'npm'
   uses: actions/setup-node@v4.2.0
   with:
     # Set always-auth in npmrc.
