@@ -15,7 +15,7 @@ export default function Archivo() {
           <h1 className="text-[clamp(3rem,12vw,10rem)] font-bold leading-[0.8] tracking-tighter text-blanco">
             archivo
           </h1>
-          <p className="mt-4 text-[0.65rem] tracking-[0.3em] text-gris">
+          <p className="mt-4 text-[0.65rem] tracking-wide text-gris">
             {pieces.length} piezas
           </p>
         </header>
@@ -27,7 +27,7 @@ export default function Archivo() {
         </section>
 
         <footer className="mt-32 border-t border-gris-oscuro pt-8">
-          <p className="text-[0.55rem] tracking-[0.3em] text-gris">
+          <p className="text-[0.55rem] tracking-wide text-gris">
             bratzche journal
           </p>
         </footer>

@@ -35,7 +35,7 @@ export default function PieceCard({ piece, index }: PieceCardProps) {
         }}
       >
         <div className="relative">
-          <span className="text-[0.65rem] tracking-[0.3em] text-gris block mb-4 group-hover:text-neon transition-colors duration-500">
+          <span className="text-[0.65rem] tracking-wide text-gris block mb-4 group-hover:text-neon transition-colors duration-500">
             {piece.date}
           </span>
 

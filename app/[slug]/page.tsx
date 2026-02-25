@@ -42,7 +42,7 @@ export default async function PiecePage({
       <main className="min-h-screen bg-negro px-6 md:px-16 lg:px-24 pt-28 pb-32">
         <article className="max-w-4xl mx-auto">
           <header className="mb-16 md:mb-24">
-            <span className="text-[0.65rem] tracking-[0.3em] text-gris block mb-6">
+            <span className="text-[0.65rem] tracking-wide text-gris block mb-6">
               {piece.date}
             </span>
 
@@ -71,7 +71,7 @@ export default async function PiecePage({
               href={piece.pdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-[0.7rem] tracking-[0.2em] text-neon hover:text-blanco transition-colors duration-300 group border border-neon/30 hover:border-blanco/30 px-5 py-3"
+              className="inline-flex items-center gap-3 text-[0.7rem] tracking-wide text-neon hover:text-blanco transition-colors duration-300 group border border-neon/30 hover:border-blanco/30 px-5 py-3"
             >
               <svg
                 width="14"
@@ -93,7 +93,7 @@ export default async function PiecePage({
           </div>
 
           <div className="mt-16 pt-8 border-t border-gris-oscuro">
-            <h2 className="text-[0.65rem] tracking-[0.3em] text-gris mb-8">
+            <h2 className="text-[0.65rem] tracking-wide text-gris mb-8">
               extracto
             </h2>
             <div className="max-w-2xl space-y-6">
@@ -114,7 +114,7 @@ export default async function PiecePage({
                 href={`/${prevPiece.slug}`}
                 className="group text-left max-w-[45%]"
               >
-                <span className="text-[0.55rem] tracking-[0.3em] text-gris block mb-2">
+                <span className="text-[0.55rem] tracking-wide text-gris block mb-2">
                   anterior
                 </span>
                 <span className="text-lg font-bold text-gris group-hover:text-neon transition-colors duration-300">
@@ -130,7 +130,7 @@ export default async function PiecePage({
                 href={`/${nextPiece.slug}`}
                 className="group text-right max-w-[45%]"
               >
-                <span className="text-[0.55rem] tracking-[0.3em] text-gris block mb-2">
+                <span className="text-[0.55rem] tracking-wide text-gris block mb-2">
                   siguiente
                 </span>
                 <span className="text-lg font-bold text-gris group-hover:text-neon transition-colors duration-300">
