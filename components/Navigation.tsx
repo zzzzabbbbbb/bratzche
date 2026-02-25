@@ -20,6 +20,14 @@ export default function Navigation() {
         >
           archivo
         </Link>
+        <Link
+          href="/mapa"
+          className={`transition-colors duration-300 ${
+            pathname === "/mapa" ? "text-neon" : "text-gris hover:text-blanco"
+          }`}
+        >
+          mapa
+        </Link>
       </div>
     </nav>
   );

@@ -92,15 +92,35 @@ export default async function PiecePage({
             </a>
           </div>
 
-          <div className="mt-16 pt-8 border-t border-gris-oscuro">
-            <h2 className="text-[0.65rem] tracking-wide text-gris mb-8">
-              extracto
-            </h2>
-            <div className="max-w-2xl space-y-6">
-              {piece.content.split("\n\n").map((paragraph, i) => (
+          <div className="mt-16 pt-12 border-t border-gris-oscuro">
+            <div className="max-w-2xl space-y-10">
+              {piece.epigraphs.map((line, i) => {
+                const isQuote = line.startsWith('"') || line.startsWith('"');
+                const isQuestion = line.endsWith("?");
+                return (
+                  <p
+                    key={i}
+                    className={`
+                      leading-[1.6]
+                      ${isQuestion ? "text-xl md:text-2xl font-bold text-blanco" : ""}
+                      ${isQuote && !isQuestion ? "text-base md:text-lg italic text-gris" : ""}
+                      ${!isQuote && !isQuestion ? "text-sm md:text-base text-gris/70" : ""}
+                    `}
+                  >
+                    {line}
+                  </p>
+                );
+              })}
+            </div>
+
+            <div className="mt-16 max-w-2xl space-y-6">
+              <p className="text-[0.65rem] tracking-wide text-gris-oscuro mb-6">
+                del ensayo
+              </p>
+              {piece.content.split("\n\n").slice(0, 3).map((paragraph, i) => (
                 <p
                   key={i}
-                  className="text-[0.95rem] md:text-base leading-[1.8] text-gris font-light"
+                  className="text-[0.9rem] md:text-base leading-[1.9] text-gris/60 font-light"
                 >
                   {paragraph}
                 </p>

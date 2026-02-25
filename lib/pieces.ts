@@ -4,6 +4,7 @@ export interface Piece {
   date: string;
   tags: string[];
   excerpt: string;
+  epigraphs: string[];
   content: string;
   pdf: string;
 }
@@ -15,6 +16,12 @@ export const pieces: Piece[] = [
     date: "2025-02-22",
     tags: ["nihilismo", "entropia", "nietzsche"],
     excerpt: "El universo no tiene sentido. Eso es condena.",
+    epigraphs: [
+      "Si el universo no te debe nada, ¿por qué insistes en cobrarle?",
+      "\"Dios ha muerto. Dios sigue muerto. Y nosotros lo hemos matado.\" — Nietzsche",
+      "La entropía no negocia. No espera. No perdona.",
+      "¿Qué diferencia hay entre un acto heroico y uno absurdo en un universo que no registra ninguno?",
+    ],
     content: `El universo no tiene sentido. Eso no es liberación. es condena.
 
 Nietzsche lo supo antes que nadie: el abismo no devuelve la mirada por cortesía, la devuelve porque no tiene otra cosa que hacer. La entropía no es una fuerza destructiva; es la indiferencia hecha ley física. Todo tiende al desorden no porque el caos sea poderoso, sino porque el orden es improbable.
@@ -37,6 +44,12 @@ La irrelevancia no es el final del pensamiento. Es donde el pensamiento realment
     tags: ["lacan", "foucault", "hipocresia"],
     excerpt:
       "¿Es la máscara lo único que hay, o el deseo de quitárnosla es la más elaborada de las ficciones?",
+    epigraphs: [
+      "\"El inconsciente está estructurado como un lenguaje.\" — Lacan",
+      "¿Quién eres cuando nadie te ve? ¿Y si esa persona también es una máscara?",
+      "La autenticidad es el último lujo del performer consumado.",
+      "Foucault: el poder no reprime, produce. Produce sujetos que creen ser libres.",
+    ],
     content: `¿Es la máscara lo único que hay, o el deseo de quitárnosla es la más elaborada de las ficciones?
 
 Lacan lo articuló con precisión quirúrgica: el sujeto no está detrás de la máscara. El sujeto es el movimiento mismo de ponérsela y quitársela. No hay rostro original debajo. hay capas, y cada capa es tan "auténtica" como la siguiente.
@@ -58,6 +71,12 @@ No la verdad como correspondencia con un hecho. La verdad como proceso. Como mov
     date: "2025-04-01",
     tags: ["fisica-cuantica", "budismo", "campos"],
     excerpt: "La ola, tan ingenua, queriendo saberse distinta al mar.",
+    epigraphs: [
+      "\"La forma es vacío, el vacío es forma.\" — Sutra del Corazón",
+      "El vacío cuántico contiene más energía que toda la materia visible del universo.",
+      "¿Eres la ola o eres el mar pretendiendo que olvidó?",
+      "Nagarjuna: todo lo que surge dependientemente es vacío. Todo lo que es vacío surge dependientemente.",
+    ],
     content: `La ola, tan ingenua, queriendo saberse distinta al mar.
 
 En teoría cuántica de campos, el vacío no está vacío. Fluctúa. Partículas virtuales aparecen y desaparecen en escalas de tiempo tan breves que desafían la medición pero no la realidad. El vacío es el estado de mínima energía, y aun así está lleno de actividad.
@@ -80,6 +99,12 @@ La fluctuación no es anomalía. Es la naturaleza fundamental de lo que hay. Y l
     tags: ["lacan", "topologia", "deseo", "psicoanalisis"],
     excerpt:
       "El deseo no tiene objeto. Tiene estructura. Y esa estructura es topológica.",
+    epigraphs: [
+      "El nudo borromeo: tres que son uno. Corta uno, pierdes todo.",
+      "\"No hay relación sexual.\" — Lacan. No hay relación que no esté mediada por lo simbólico.",
+      "¿Deseas lo que deseas, o deseas el deseo del otro?",
+      "La banda de Möbius no tiene interior. Tampoco tú.",
+    ],
     content: `El deseo no tiene objeto. Tiene estructura. Y esa estructura es topológica.
 
 Lacan tomó prestada la banda de Möbius para ilustrar algo que el lenguaje ordinario no puede capturar: la continuidad entre el adentro y el afuera del sujeto. No hay interior psíquico separado del exterior social. Hay una superficie única que se tuerce sobre sí misma, creando la ilusión de dos lados donde solo hay uno.
