@@ -9,15 +9,6 @@ export default function Home() {
         <Logo size="lg" href="/archivo" />
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <div
-          className="w-px h-8 bg-gris"
-          style={{ animation: "pulse-line 2s ease-in-out infinite" }}
-        />
-        <span className="font-mono text-[0.55rem] tracking-[0.3em] text-gris uppercase">
-          entrar
-        </span>
-      </div>
     </main>
   );
 }
