@@ -13,9 +13,9 @@ export default function Archivo() {
       <main className="min-h-screen bg-negro px-6 md:px-16 lg:px-24 pt-24 pb-32">
         <header className="mb-16 md:mb-32">
           <h1 className="text-[clamp(3rem,12vw,10rem)] font-bold leading-[0.8] tracking-tighter text-blanco">
-            Archivo
+            archivo
           </h1>
-          <p className="mt-4 font-mono text-[0.65rem] tracking-[0.3em] text-gris uppercase">
+          <p className="mt-4 text-[0.65rem] tracking-[0.3em] text-gris">
             {pieces.length} piezas
           </p>
         </header>
@@ -27,8 +27,8 @@ export default function Archivo() {
         </section>
 
         <footer className="mt-32 border-t border-gris-oscuro pt-8">
-          <p className="font-mono text-[0.55rem] tracking-[0.3em] text-gris uppercase">
-            bratzche journal — archivo experimental
+          <p className="text-[0.55rem] tracking-[0.3em] text-gris">
+            bratzche journal
           </p>
         </footer>
       </main>

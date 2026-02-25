@@ -11,7 +11,7 @@ export default function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-2">
       <Logo size="sm" href="/" />
 
-      <div className="flex gap-6 font-mono text-[0.65rem] tracking-[0.2em] uppercase">
+      <div className="flex gap-6 text-[0.65rem] tracking-[0.2em]">
         <Link
           href="/archivo"
           className={`transition-colors duration-300 ${
