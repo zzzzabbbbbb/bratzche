@@ -76,12 +76,17 @@ export default function VoidSpace() {
 
   const randomFragment = useCallback((): Fragment => {
     const id = fragIdRef.current++;
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+    const sizes = isMobile
+      ? [10, 12, 14, 16, 20, 24, 30, 36]
+      : [12, 14, 16, 20, 24, 32, 48, 64, 72];
+    const text = FRAGMENTS[Math.floor(Math.random() * FRAGMENTS.length)];
     return {
       id,
-      text: FRAGMENTS[Math.floor(Math.random() * FRAGMENTS.length)],
-      x: Math.random() * 90 + 5,
-      y: Math.random() * 85 + 5,
-      size: [12, 14, 16, 20, 24, 32, 48, 64, 72][Math.floor(Math.random() * 9)],
+      text: isMobile && text.length > 22 ? text.slice(0, 20) : text,
+      x: Math.random() * 80 + 5,
+      y: Math.random() * 80 + 5,
+      size: sizes[Math.floor(Math.random() * sizes.length)],
       opacity: Math.random() * 0.7 + 0.3,
       skew: (Math.random() - 0.5) * 15,
       duration: 1000 + Math.random() * 3000,
@@ -165,7 +170,7 @@ export default function VoidSpace() {
         return (
           <span
             key={f.id}
-            className="absolute pointer-events-none whitespace-nowrap"
+            className="absolute pointer-events-none break-all max-w-[85vw]"
             style={{
               left: `${f.x}%`,
               top: `${f.y}%`,

@@ -37,12 +37,16 @@ export default function Threshold() {
   const fragIdRef = useRef(0);
 
   const randomFrag = useCallback((): Fragment => {
-    const sizes = [14, 16, 20, 24, 30, 36, 44, 52, 60];
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+    const sizes = isMobile
+      ? [10, 12, 14, 16, 18, 22, 26, 30]
+      : [14, 16, 20, 24, 30, 36, 44, 52, 60];
+    const text = FRAGMENTS[Math.floor(Math.random() * FRAGMENTS.length)];
     return {
       id: fragIdRef.current++,
-      text: FRAGMENTS[Math.floor(Math.random() * FRAGMENTS.length)],
-      x: Math.random() * 90 + 5,
-      y: Math.random() * 85 + 5,
+      text: isMobile && text.length > 20 ? text.slice(0, 18) : text,
+      x: Math.random() * 80 + 5,
+      y: Math.random() * 80 + 5,
       size: sizes[Math.floor(Math.random() * sizes.length)],
       opacity: Math.random() * 0.7 + 0.3,
       skew: (Math.random() - 0.5) * 12,
@@ -101,7 +105,7 @@ export default function Threshold() {
           {fragments.map((f) => (
             <span
               key={f.id}
-              className="absolute pointer-events-none whitespace-nowrap font-mono"
+              className="absolute pointer-events-none font-mono break-all max-w-[80vw]"
               style={{
                 left: `${f.x}%`,
                 top: `${f.y}%`,
