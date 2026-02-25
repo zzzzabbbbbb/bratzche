@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-negro: #000000;
+  --color-blanco: #FFFFFF;
+  --color-neon: #00FF00;
+  --color-gris: #888888;
+  --color-gris-oscuro: #1a1a1a;
+
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-negro);
+  color: var(--color-blanco);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-neon);
+  color: var(--color-negro);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-negro);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gris-oscuro);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon);
+}
+
+@keyframes warp {
+  0%, 100% {
+    transform: skewX(0deg) scaleY(1);
+    letter-spacing: 0.05em;
+  }
+  25% {
+    transform: skewX(-2deg) scaleY(1.02);
+    letter-spacing: 0.08em;
+  }
+  50% {
+    transform: skewX(1deg) scaleY(0.98);
+    letter-spacing: 0.03em;
+  }
+  75% {
+    transform: skewX(-1deg) scaleY(1.01);
+    letter-spacing: 0.06em;
+  }
+}
+
+@keyframes glitch {
+  0%, 100% {
+    text-shadow: none;
+  }
+  20% {
+    text-shadow: 2px 0 var(--color-neon), -2px 0 var(--color-neon);
+  }
+  40% {
+    text-shadow: -2px 0 var(--color-neon), 2px 0 transparent;
+  }
+  60% {
+    text-shadow: 2px 0 transparent, -2px 0 var(--color-neon);
+  }
+  80% {
+    text-shadow: -1px 0 var(--color-neon), 1px 0 var(--color-neon);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-line {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
 }
