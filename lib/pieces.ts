@@ -64,6 +64,7 @@ Cuando alguien dice "yo soy así, sin filtros", está ejecutando la performance 
 ¿Qué queda? Quizás lo más honesto sea reconocer que la máscara no se quita. Se cambia. Y en ese cambio constante. en esa danza entre versiones de uno mismo. hay algo que se parece peligrosamente a la verdad.
 
 No la verdad como correspondencia con un hecho. La verdad como proceso. Como movimiento perpetuo entre lo que mostramos y lo que ocultamos, sabiendo que ambos gestos son igualmente constructivos, igualmente ficticios, igualmente necesarios.`,
+    pdf: "/pdfs/mascara.pdf",
   },
   {
     slug: "fluctuacion",
