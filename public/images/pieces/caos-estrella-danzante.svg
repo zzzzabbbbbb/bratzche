@@ -1,0 +1,26 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111111" />
+      <stop offset="40%" stop-color="#000000" />
+      <stop offset="70%" stop-color="#060606" />
+      <stop offset="100%" stop-color="#0f0f0f" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#grad)" />
+  <g opacity="0.25">
+    <circle cx="800" cy="450" r="320" stroke="#ffffff" stroke-width="1" stroke-dasharray="8 12" />
+    <circle cx="900" cy="500" r="420" stroke="#ffffff" stroke-width="0.6" stroke-dasharray="5 9" />
+    <circle cx="680" cy="400" r="220" stroke="#00ff66" stroke-width="1.2" stroke-dasharray="4 6" />
+  </g>
+  <path d="M200 720C300 520 420 720 560 540C700 360 820 700 980 540C1140 380 1260 700 1420 540" stroke="#00ff66" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="560" cy="540" r="14" fill="#00ff66"/>
+  <circle cx="980" cy="540" r="14" fill="#00ff66"/>
+  <circle cx="1420" cy="540" r="14" fill="#00ff66"/>
+  <text x="120" y="150" fill="#ffffff" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="32" letter-spacing="3">
+    HAY QUE TENER UN CAOS DENTRO DE SÍ
+  </text>
+  <text x="120" y="200" fill="#00ff66" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2">
+    PARA DAR A LUZ A UNA ESTRELLA DANZANTE
+  </text>
+</svg>

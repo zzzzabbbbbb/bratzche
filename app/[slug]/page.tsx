@@ -142,10 +142,13 @@ export default async function PiecePage({
               <p className="text-[0.65rem] tracking-wide text-gris-oscuro mb-6">
                 del ensayo
               </p>
-              {piece.content.split("\n\n").slice(0, 3).map((paragraph, i) => (
+              {piece.content
+                .split("\n\n")
+                .filter((paragraph) => paragraph.trim())
+                .map((paragraph, i) => (
                 <p
                   key={i}
-                  className="text-[0.9rem] md:text-base leading-[1.9] text-gris/60 font-light"
+                  className="text-[0.95rem] md:text-base leading-[1.9] text-gris/70 font-normal"
                 >
                   {paragraph}
                 </p>

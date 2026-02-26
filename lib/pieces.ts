@@ -239,6 +239,7 @@ Gracias por acompañarme.
 Gracias por estar.
 
 Estoy feliz.`,
+    image: "/images/pieces/caos-estrella-danzante.svg",
   },
 ];
 
