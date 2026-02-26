@@ -148,7 +148,7 @@ export default async function PiecePage({
                 .map((paragraph, i) => (
                 <p
                   key={i}
-                  className="text-[0.95rem] md:text-base leading-[1.9] text-gris/70 font-normal"
+                  className="text-[0.95rem] md:text-base leading-[1.9] text-blanco font-normal"
                 >
                   {paragraph}
                 </p>
