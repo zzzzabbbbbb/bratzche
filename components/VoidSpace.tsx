@@ -44,6 +44,7 @@ const FRAGMENTS = [
 ];
 
 const COLORS = ["#FF0000", "#00FF00", "#FF00FF", "#00FFFF", "#000000"];
+const VOID_FONT_STACK = '"Helvetica Neue", Helvetica, Arial, sans-serif';
 
 interface Fragment {
   id: number;
@@ -87,7 +88,7 @@ export default function VoidSpace() {
       glitch,
       glitchOffset: glitch ? (Math.random() - 0.5) * 10 : 0,
       color: Math.random() > 0.7 ? "#00FF00" : "#FFFFFF",
-      fontFamily: Math.random() > 0.5 ? "Helvetica, Arial, sans-serif" : "monospace",
+      fontFamily: VOID_FONT_STACK,
       textShadow: glitch
         ? `${Math.random() * 4 - 2}px 0 #FF0000, ${Math.random() * 4 - 2}px 0 #00FFFF`
         : "none",
@@ -240,7 +241,7 @@ export default function VoidSpace() {
               fontSize: 11,
               opacity: opacity * 0.6,
               transform: "translate(-50%, -50%)",
-              fontFamily: "Helvetica, Arial, sans-serif",
+              fontFamily: VOID_FONT_STACK,
               mixBlendMode: "difference",
             }}
           >
@@ -253,7 +254,7 @@ export default function VoidSpace() {
         className="fixed bottom-4 right-4 text-[8px] pointer-events-none"
         style={{
           opacity: 0.08,
-          fontFamily: "monospace",
+          fontFamily: VOID_FONT_STACK,
           color: "#FFFFFF",
           mixBlendMode: "difference",
         }}
