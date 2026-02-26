@@ -20,6 +20,7 @@ const FRAGMENTS = [
 ];
 
 const COLORS = ["#FF0000", "#00FF00", "#FF00FF", "#00FFFF", "#000000"];
+const THRESHOLD_FONT_STACK = '"Helvetica Neue", Helvetica, Arial, sans-serif';
 
 interface Fragment {
   id: number;
@@ -36,6 +37,8 @@ export default function Threshold() {
   const [phase, setPhase] = useState<"chaos" | "fadeout" | "landing" | "exit">("chaos");
   const [bgColor, setBgColor] = useState("#000000");
   const [fragments, setFragments] = useState<Fragment[]>([]);
+  const [logoVisible, setLogoVisible] = useState(false);
+  const [logoInverted, setLogoInverted] = useState(false);
   const fragIdRef = useRef(0);
   const router = useRouter();
 
@@ -95,14 +98,31 @@ export default function Threshold() {
 
   useEffect(() => {
     if (phase !== "fadeout") return;
-    const timer = setTimeout(() => setPhase("landing"), 600);
+    const timer = setTimeout(() => {
+      setLogoVisible(false);
+      setLogoInverted(false);
+      setPhase("landing");
+    }, 600);
     return () => clearTimeout(timer);
   }, [phase]);
 
   useEffect(() => {
     if (phase !== "landing") return;
-    const timer = setTimeout(() => setPhase("exit"), 2500);
-    return () => clearTimeout(timer);
+    const frame = requestAnimationFrame(() => {
+      setLogoVisible(true);
+    });
+    const invertTimer = setTimeout(() => {
+      setLogoInverted(true);
+    }, 700);
+    const exitTimer = setTimeout(() => {
+      setPhase("exit");
+    }, 2400);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(invertTimer);
+      clearTimeout(exitTimer);
+    };
   }, [phase]);
 
   useEffect(() => {
@@ -124,7 +144,7 @@ export default function Threshold() {
           {fragments.map((f) => (
             <span
               key={f.id}
-              className="absolute pointer-events-none font-mono break-all max-w-[80vw]"
+              className="absolute pointer-events-none break-all max-w-[80vw]"
               style={{
                 left: `${f.x}%`,
                 top: `${f.y}%`,
@@ -132,6 +152,7 @@ export default function Threshold() {
                 opacity: f.opacity,
                 transform: `skewX(${f.skew}deg)`,
                 color: f.color,
+                fontFamily: THRESHOLD_FONT_STACK,
                 mixBlendMode: "difference",
               }}
             >
@@ -157,16 +178,18 @@ export default function Threshold() {
           <div
             className="relative z-10"
             style={{
-              animation: phase === "landing"
-                ? "fadeIn 0.8s ease forwards"
-                : "none",
-              opacity: phase === "exit" ? 1 : undefined,
-              transform: phase === "exit" ? "translateY(-40px)" : undefined,
-              transition: phase === "exit" ? "opacity 0.8s ease, transform 0.8s ease" : undefined,
+              opacity: logoVisible ? 1 : 0,
+              transform: phase === "exit" ? "translate3d(0,-40px,0)" : "translate3d(0,0,0)",
+              transition: "opacity 0.8s ease, transform 0.8s ease",
+              willChange: "opacity, transform",
             }}
           >
             <div
-              className="relative select-none p-6 transition-all duration-500 bg-blanco"
+              className="relative select-none p-6"
+              style={{
+                backgroundColor: logoInverted ? "#FFFFFF" : "#000000",
+                transition: "background-color 0.7s ease",
+              }}
             >
               <Image
                 src="/images/logo.png"
@@ -174,7 +197,11 @@ export default function Threshold() {
                 width={600}
                 height={270}
                 priority
-                className="w-[clamp(280px,60vw,600px)] h-auto invert"
+                className="w-[clamp(280px,60vw,600px)] h-auto"
+                style={{
+                  filter: logoInverted ? "invert(1)" : "invert(0)",
+                  transition: "filter 0.7s ease",
+                }}
               />
             </div>
           </div>
