@@ -213,7 +213,7 @@ export default function NodeMap() {
     mouseRef.current = { x: e.clientX, y: e.clientY };
   };
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = () => {
     const idx = hoveredRef.current;
     if (idx >= 0 && nodesRef.current[idx]) {
       router.push(`/${nodesRef.current[idx].slug}`);

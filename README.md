@@ -49,6 +49,36 @@ npm install
 npm run dev
 ```
 
+## Analytics dashboard
+
+Ruta privada: `/analytics`
+
+Incluye:
+
+- `app/api/analytics/ga4`
+- `app/api/analytics/vercel`
+- `app/api/analytics/cloudflare`
+- `app/analytics` (login + dashboard)
+
+Variables requeridas en `.env.local`:
+
+- `ANALYTICS_PASSWORD`
+- `GA4_PROPERTY_ID`
+- `GA4_CREDENTIALS_JSON`
+- `VERCEL_ACCESS_TOKEN`
+- `VERCEL_PROJECT_ID_OR_NAME`
+- `VERCEL_TEAM_ID` (opcional)
+- `CF_API_TOKEN`
+- `CF_ZONE_ID`
+
+Dependencia adicional:
+
+```bash
+npm install @google-analytics/data
+```
+
+Luego replica esas variables en Vercel Project Settings antes de deploy.
+
 ## Deploy
 
 ```bash

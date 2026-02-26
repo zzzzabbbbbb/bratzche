@@ -29,6 +29,7 @@ interface Fragment {
   size: number;
   opacity: number;
   skew: number;
+  color: string;
 }
 
 export default function Threshold() {
@@ -52,13 +53,16 @@ export default function Threshold() {
       size: sizes[Math.floor(Math.random() * sizes.length)],
       opacity: Math.random() * 0.7 + 0.3,
       skew: (Math.random() - 0.5) * 12,
+      color: Math.random() > 0.6 ? "#00FF00" : "#FFFFFF",
     };
   }, []);
 
   useEffect(() => {
     if (phase !== "chaos") return;
 
-    setFragments(Array.from({ length: 6 }, randomFrag));
+    const seedTimer = setTimeout(() => {
+      setFragments(Array.from({ length: 6 }, randomFrag));
+    }, 0);
 
     const bgInterval = setInterval(() => {
       setBgColor(COLORS[Math.floor(Math.random() * COLORS.length)]);
@@ -82,6 +86,7 @@ export default function Threshold() {
     }, 4000);
 
     return () => {
+      clearTimeout(seedTimer);
       clearInterval(bgInterval);
       clearInterval(fragInterval);
       clearTimeout(timer);
@@ -126,7 +131,7 @@ export default function Threshold() {
                 fontSize: f.size,
                 opacity: f.opacity,
                 transform: `skewX(${f.skew}deg)`,
-                color: Math.random() > 0.6 ? "#00FF00" : "#FFFFFF",
+                color: f.color,
                 mixBlendMode: "difference",
               }}
             >

@@ -55,6 +55,12 @@ interface Fragment {
   skew: number;
   duration: number;
   born: number;
+  glitch: boolean;
+  glitchOffset: number;
+  color: string;
+  fontFamily: string;
+  textShadow: string;
+  renderedText: string;
 }
 
 interface Trail {
@@ -70,9 +76,29 @@ export default function VoidSpace() {
   const [fragments, setFragments] = useState<Fragment[]>([]);
   const [trails, setTrails] = useState<Trail[]>([]);
   const [flash, setFlash] = useState(false);
+  const [now, setNow] = useState(() => Date.now());
   const fragIdRef = useRef(0);
   const trailIdRef = useRef(0);
   const lastTrailRef = useRef(0);
+
+  const makeVisualState = useCallback((text: string) => {
+    const glitch = Math.random() > 0.85;
+    return {
+      glitch,
+      glitchOffset: glitch ? (Math.random() - 0.5) * 10 : 0,
+      color: Math.random() > 0.7 ? "#00FF00" : "#FFFFFF",
+      fontFamily: Math.random() > 0.5 ? "Helvetica, Arial, sans-serif" : "monospace",
+      textShadow: glitch
+        ? `${Math.random() * 4 - 2}px 0 #FF0000, ${Math.random() * 4 - 2}px 0 #00FFFF`
+        : "none",
+      renderedText: glitch
+        ? text
+            .split("")
+            .map((c) => (Math.random() > 0.8 ? c + c : c))
+            .join("")
+        : text,
+    };
+  }, []);
 
   const randomFragment = useCallback((): Fragment => {
     const id = fragIdRef.current++;
@@ -80,10 +106,12 @@ export default function VoidSpace() {
     const sizes = isMobile
       ? [10, 12, 14, 16, 20, 24, 30, 36]
       : [12, 14, 16, 20, 24, 32, 48, 64, 72];
-    const text = FRAGMENTS[Math.floor(Math.random() * FRAGMENTS.length)];
+    const baseText = FRAGMENTS[Math.floor(Math.random() * FRAGMENTS.length)];
+    const text = isMobile && baseText.length > 22 ? baseText.slice(0, 20) : baseText;
+    const visual = makeVisualState(text);
     return {
       id,
-      text: isMobile && text.length > 22 ? text.slice(0, 20) : text,
+      text,
       x: Math.random() * 80 + 5,
       y: Math.random() * 80 + 5,
       size: sizes[Math.floor(Math.random() * sizes.length)],
@@ -91,8 +119,9 @@ export default function VoidSpace() {
       skew: (Math.random() - 0.5) * 15,
       duration: 1000 + Math.random() * 3000,
       born: Date.now(),
+      ...visual,
     };
-  }, []);
+  }, [makeVisualState]);
 
   useEffect(() => {
     const bgInterval = setInterval(() => {
@@ -103,19 +132,30 @@ export default function VoidSpace() {
       const f = randomFragment();
       setFragments((prev) => {
         const now = Date.now();
-        const alive = prev.filter((p) => now - p.born < p.duration);
+        const alive = prev
+          .filter((p) => now - p.born < p.duration)
+          .map((p) => (Math.random() > 0.82 ? { ...p, ...makeVisualState(p.text) } : p));
         return [...alive.slice(-25), f];
       });
     }, 300);
 
-    const initialFragments = Array.from({ length: 8 }, randomFragment);
-    setFragments(initialFragments);
+    const seedTimer = setTimeout(() => {
+      setFragments(Array.from({ length: 8 }, randomFragment));
+    }, 0);
 
     return () => {
+      clearTimeout(seedTimer);
       clearInterval(bgInterval);
       clearInterval(fragInterval);
     };
-  }, [randomFragment]);
+  }, [makeVisualState, randomFragment]);
+
+  useEffect(() => {
+    const tick = setInterval(() => {
+      setNow(Date.now());
+    }, 80);
+    return () => clearInterval(tick);
+  }, []);
 
   useEffect(() => {
     const cleanup = setInterval(() => {
@@ -162,10 +202,9 @@ export default function VoidSpace() {
       )}
 
       {fragments.map((f) => {
-        const age = Date.now() - f.born;
+        const age = now - f.born;
         const progress = age / f.duration;
-        const fadeOut = progress > 0.7 ? 1 - (progress - 0.7) / 0.3 : 1;
-        const glitch = Math.random() > 0.85;
+        const fadeOut = progress > 0.7 ? Math.max(0, 1 - (progress - 0.7) / 0.3) : 1;
 
         return (
           <span
@@ -176,27 +215,20 @@ export default function VoidSpace() {
               top: `${f.y}%`,
               fontSize: f.size,
               opacity: f.opacity * fadeOut,
-              transform: `skewX(${f.skew}deg) ${glitch ? `translateX(${(Math.random() - 0.5) * 10}px)` : ""}`,
-              color: Math.random() > 0.7 ? "#00FF00" : "#FFFFFF",
-              fontFamily: Math.random() > 0.5 ? "Helvetica, Arial, sans-serif" : "monospace",
-              textShadow: glitch
-                ? `${Math.random() * 4 - 2}px 0 #FF0000, ${Math.random() * 4 - 2}px 0 #00FFFF`
-                : "none",
+              transform: `skewX(${f.skew}deg) ${f.glitch ? `translateX(${f.glitchOffset}px)` : ""}`,
+              color: f.color,
+              fontFamily: f.fontFamily,
+              textShadow: f.textShadow,
               mixBlendMode: "difference",
             }}
           >
-            {glitch
-              ? f.text
-                  .split("")
-                  .map((c) => (Math.random() > 0.8 ? c + c : c))
-                  .join("")
-              : f.text}
+            {f.renderedText}
           </span>
         );
       })}
 
       {trails.map((t) => {
-        const age = Date.now() - t.born;
+        const age = now - t.born;
         const opacity = Math.max(0, 1 - age / 1500);
         return (
           <span
