@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { pieces, getPieceBySlug, getAllSlugs } from "@/lib/pieces";
 import Navigation from "@/components/Navigation";
 import PdfSection from "@/components/PdfSection";
@@ -63,34 +64,58 @@ export default async function PiecePage({
           </header>
 
           <section className="mb-16">
-            <PdfSection url={piece.pdf} />
+            {piece.image && (
+              <div className="mb-10 border border-gris-oscuro bg-negro p-3 md:p-4">
+                <div className="relative overflow-hidden border border-gris-oscuro bg-negro">
+                  <Image
+                    src={piece.image}
+                    alt={piece.title}
+                    width={1600}
+                    height={900}
+                    className="w-full h-auto"
+                    priority
+                  />
+                </div>
+              </div>
+            )}
+            {piece.pdf ? (
+              <PdfSection url={piece.pdf} />
+            ) : (
+              <div className="w-full border border-gris-oscuro bg-negro/40 px-5 py-8">
+                <p className="font-mono text-[0.62rem] tracking-[0.22em] text-gris uppercase">
+                  pdf no disponible por ahora
+                </p>
+              </div>
+            )}
           </section>
 
-          <div className="mt-8">
-            <a
-              href={piece.pdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-[0.7rem] tracking-wide text-neon hover:text-blanco transition-colors duration-300 group border border-neon/30 hover:border-blanco/30 px-5 py-3"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                className="transition-transform duration-300 group-hover:translate-y-0.5"
+          {piece.pdf && (
+            <div className="mt-8">
+              <a
+                href={piece.pdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 text-[0.7rem] tracking-wide text-neon hover:text-blanco transition-colors duration-300 group border border-neon/30 hover:border-blanco/30 px-5 py-3"
               >
-                <path
-                  d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M1 13h12"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              descargar pdf
-            </a>
-          </div>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  className="transition-transform duration-300 group-hover:translate-y-0.5"
+                >
+                  <path
+                    d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M1 13h12"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                descargar pdf
+              </a>
+            </div>
+          )}
 
           <div className="mt-16 pt-12 border-t border-gris-oscuro">
             <div className="max-w-2xl space-y-10">

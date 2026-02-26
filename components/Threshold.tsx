@@ -30,7 +30,6 @@ interface Fragment {
   size: number;
   opacity: number;
   skew: number;
-  color: string;
 }
 
 export default function Threshold() {
@@ -55,8 +54,7 @@ export default function Threshold() {
       y: Math.random() * 80 + 5,
       size: sizes[Math.floor(Math.random() * sizes.length)],
       opacity: Math.random() * 0.7 + 0.3,
-      skew: (Math.random() - 0.5) * 12,
-      color: Math.random() > 0.6 ? "#00FF00" : "#FFFFFF",
+      skew: (Math.random() - 0.5) * 3,
     };
   }, []);
 
@@ -144,16 +142,17 @@ export default function Threshold() {
           {fragments.map((f) => (
             <span
               key={f.id}
-              className="absolute pointer-events-none break-all max-w-[80vw]"
+              className="absolute pointer-events-none whitespace-nowrap max-w-[80vw]"
               style={{
                 left: `${f.x}%`,
                 top: `${f.y}%`,
                 fontSize: f.size,
                 opacity: f.opacity,
                 transform: `skewX(${f.skew}deg)`,
-                color: f.color,
+                color: "#000000",
                 fontFamily: THRESHOLD_FONT_STACK,
-                mixBlendMode: "difference",
+                letterSpacing: "0",
+                fontWeight: 500,
               }}
             >
               {f.text}

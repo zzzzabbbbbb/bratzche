@@ -1,0 +1,26 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#000000"/>
+  <g opacity="0.18">
+    <path d="M0 120H1600" stroke="#FFFFFF" stroke-width="1"/>
+    <path d="M0 240H1600" stroke="#FFFFFF" stroke-width="1"/>
+    <path d="M0 360H1600" stroke="#FFFFFF" stroke-width="1"/>
+    <path d="M0 480H1600" stroke="#FFFFFF" stroke-width="1"/>
+    <path d="M0 600H1600" stroke="#FFFFFF" stroke-width="1"/>
+    <path d="M0 720H1600" stroke="#FFFFFF" stroke-width="1"/>
+    <path d="M200 0V900" stroke="#FFFFFF" stroke-width="1"/>
+    <path d="M400 0V900" stroke="#FFFFFF" stroke-width="1"/>
+    <path d="M600 0V900" stroke="#FFFFFF" stroke-width="1"/>
+    <path d="M800 0V900" stroke="#FFFFFF" stroke-width="1"/>
+    <path d="M1000 0V900" stroke="#FFFFFF" stroke-width="1"/>
+    <path d="M1200 0V900" stroke="#FFFFFF" stroke-width="1"/>
+    <path d="M1400 0V900" stroke="#FFFFFF" stroke-width="1"/>
+  </g>
+  <path d="M120 530C250 320 380 660 510 460C640 260 760 650 900 430C1040 210 1160 640 1320 420C1400 310 1460 280 1520 280" stroke="#00FF66" stroke-width="3.5"/>
+  <path d="M120 570C250 380 380 710 510 510C640 310 760 700 900 480C1040 260 1160 690 1320 470C1400 360 1460 330 1520 330" stroke="#FFFFFF" stroke-opacity="0.65" stroke-width="2"/>
+  <circle cx="510" cy="460" r="10" fill="#00FF66"/>
+  <circle cx="900" cy="430" r="10" fill="#00FF66"/>
+  <circle cx="1320" cy="420" r="10" fill="#00FF66"/>
+  <rect x="96" y="96" width="1408" height="708" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="2"/>
+  <text x="130" y="170" fill="#FFFFFF" font-size="28" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="1.2">EL SER NO ES PREDICADO</text>
+  <text x="130" y="206" fill="#00FF66" font-size="13" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="2.5">SUPERPOSICION / DECOHERENCIA / RELACION</text>
+</svg>
