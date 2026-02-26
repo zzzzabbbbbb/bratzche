@@ -34,56 +34,12 @@ public/
   pdfs/                 archivos PDF descargables
   images/               logo y assets
 ```
-
-## Piezas
-
-- Irrelevancia — nihilismo, entropía, Nietzsche
-- Máscara — Lacan, Foucault, hipocresía
-- Fluctuación — física cuántica, budismo, campos
-- Topología del Deseo — Lacan, topología, psicoanálisis
-
 ## Dev
 
 ```bash
 npm install
 npm run dev
 ```
-
-## Analytics dashboard
-
-Ruta privada: `/analytics`
-
-Incluye:
-
-- `app/api/analytics/ga4`
-- `app/api/analytics/vercel`
-- `app/api/analytics/cloudflare`
-- `app/analytics` (login + dashboard)
-
-Variables requeridas en `.env.local`:
-
-- `ANALYTICS_PASSWORD`
-- `GA4_PROPERTY_ID`
-- `GA4_CREDENTIALS_JSON`
-- `VERCEL_ACCESS_TOKEN`
-- `VERCEL_PROJECT_ID_OR_NAME`
-- `VERCEL_TEAM_ID` (opcional)
-- `CF_API_TOKEN`
-- `CF_ZONE_ID`
-
-Dependencia adicional:
-
-```bash
-npm install @google-analytics/data
-```
-
-Luego replica esas variables en Vercel Project Settings antes de deploy.
-
-## Seguridad
-
-- Mantén todas las credenciales (`.env.local`, tokens, claves) fuera del repositorio y usa las variables protegidas de Vercel o un vault; si una credencial se expone, rota el token/clave inmediatamente.
-- Limita los permisos de cada secreto (GA4 con rol reader en la propiedad concreta, Cloudflare token restringido a analytics, Vercel token a ese proyecto y equipo) y habilita alertas/rotación periódica.
-- El archivo `public/robots.txt` ya responde a `User-agent: *` y bloquea `/wp-login.php` para evitar 404s repetidos de bots que buscan WordPress.
 
 ## Deploy
 
