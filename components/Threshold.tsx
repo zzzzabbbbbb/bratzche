@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import Logo from "@/components/Logo";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const FRAGMENTS = [
   "ψ(x) = ∫ e^(ipx/ℏ) φ(p) dp",
@@ -31,10 +32,11 @@ interface Fragment {
 }
 
 export default function Threshold() {
-  const [phase, setPhase] = useState<"chaos" | "fadeout" | "landing">("chaos");
+  const [phase, setPhase] = useState<"chaos" | "fadeout" | "landing" | "exit">("chaos");
   const [bgColor, setBgColor] = useState("#000000");
   const [fragments, setFragments] = useState<Fragment[]>([]);
   const fragIdRef = useRef(0);
+  const router = useRouter();
 
   const randomFrag = useCallback((): Fragment => {
     const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
@@ -92,6 +94,18 @@ export default function Threshold() {
     return () => clearTimeout(timer);
   }, [phase]);
 
+  useEffect(() => {
+    if (phase !== "landing") return;
+    const timer = setTimeout(() => setPhase("exit"), 2500);
+    return () => clearTimeout(timer);
+  }, [phase]);
+
+  useEffect(() => {
+    if (phase !== "exit") return;
+    const timer = setTimeout(() => router.push("/archivo"), 800);
+    return () => clearTimeout(timer);
+  }, [phase, router]);
+
   return (
     <div className="fixed inset-0 bg-negro">
       {phase === "chaos" && (
@@ -132,17 +146,43 @@ export default function Threshold() {
         />
       )}
 
-      {phase === "landing" && (
-        <main
-          className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
-          style={{
-            animation: "fadeIn 0.8s ease forwards",
-          }}
-        >
+      {(phase === "landing" || phase === "exit") && (
+        <main className="fixed inset-0 flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,0,0.03)_0%,transparent_70%)]" />
-          <div className="relative z-10">
-            <Logo size="lg" href="/archivo" />
+          <div
+            className="relative z-10"
+            style={{
+              animation: phase === "landing"
+                ? "fadeIn 0.8s ease forwards"
+                : "none",
+              opacity: phase === "exit" ? 1 : undefined,
+              transform: phase === "exit" ? "translateY(-40px)" : undefined,
+              transition: phase === "exit" ? "opacity 0.8s ease, transform 0.8s ease" : undefined,
+            }}
+          >
+            <div
+              className="relative select-none p-6 transition-all duration-500 bg-blanco"
+            >
+              <Image
+                src="/images/logo.png"
+                alt="bratzche journal"
+                width={600}
+                height={270}
+                priority
+                className="w-[clamp(280px,60vw,600px)] h-auto invert"
+              />
+            </div>
           </div>
+
+          {phase === "exit" && (
+            <div
+              className="fixed inset-0 bg-negro z-20"
+              style={{
+                animation: "fadeIn 0.7s ease 0.3s forwards",
+                opacity: 0,
+              }}
+            />
+          )}
         </main>
       )}
     </div>
