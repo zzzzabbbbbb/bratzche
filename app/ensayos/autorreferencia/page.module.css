@@ -1,0 +1,709 @@
+.page {
+  --deco-opacity: 0.16;
+  --deco-speed: 1;
+  position: relative;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  padding: 8rem 1.25rem 4rem;
+  overflow-x: clip;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: min(680px, 100%);
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: clamp(5rem, 10vh, 7.5rem);
+}
+
+.header {
+  position: relative;
+  width: calc(100% + 120px);
+  margin: 0 0 2.4rem -60px;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Inter", sans-serif;
+  font-size: clamp(3.6rem, 11vw, 7.2rem);
+  font-weight: 900;
+  line-height: 0.86;
+  letter-spacing: -0.012em;
+  color: #fff;
+  text-wrap: balance;
+  text-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.85rem;
+  width: clamp(120px, 28vw, 280px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.headerGlyph {
+  display: inline-block;
+  transition: opacity 0.12s linear, filter 0.16s ease, transform 0.16s ease;
+}
+
+.headerGlyphWritten {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+.headerGlyphPending {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(0.25em) scale(0.98);
+}
+
+.headerSpace {
+  white-space: pre;
+}
+
+.headerShimmer {
+  animation: headerShimmer 6.4s ease-in-out infinite;
+}
+
+.headerMap {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.92);
+  text-stroke: 1px rgba(255, 255, 255, 0.92);
+}
+
+.headerMap::after {
+  content: attr(data-title);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.35) 0,
+      rgba(255, 255, 255, 0.35) 1px,
+      transparent 1px,
+      transparent 9px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.2) 0,
+      rgba(255, 255, 255, 0.2) 1px,
+      transparent 1px,
+      transparent 13px
+    );
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: mapDrift 17s linear infinite;
+  pointer-events: none;
+}
+
+.headerAppear {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.2s linear, transform 0.2s ease-out;
+}
+
+.headerAppearVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.headerMarquee {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.marqueeTrack {
+  display: inline-flex;
+  gap: 3rem;
+  min-width: 100%;
+  animation: marquee 30s linear infinite;
+}
+
+.headerStretch {
+  display: inline-block;
+  transform-origin: center bottom;
+  animation: stretch 6.2s ease-in-out infinite;
+}
+
+.headerReflect {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 3.8rem;
+}
+
+.headerReflection {
+  display: block;
+  color: rgba(255, 255, 255, 0.2);
+  transform: scaleY(-1) translateX(3px);
+  filter: blur(0.55px);
+  letter-spacing: 0.03em;
+  animation: reflectionGlitch 4.8s steps(2, end) infinite;
+}
+
+.headerDrift {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.03em;
+}
+
+.letterDrift {
+  display: inline-block;
+  animation: letterDrift 9s ease-in-out infinite;
+  animation-delay: calc(var(--index) * 0.08s);
+}
+
+.headerFlicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.02em;
+}
+
+.letterFlicker {
+  display: inline-block;
+  animation: flicker 4.2s steps(4, end) infinite;
+  animation-delay: var(--delay);
+}
+
+.paragraphs p {
+  margin: 0 0 1.35rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Inter", sans-serif;
+  font-size: clamp(1.125rem, 2.4vw, 1.25rem);
+  line-height: 1.78;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.97);
+}
+
+.word {
+  display: inline-block;
+}
+
+.wordSpace {
+  white-space: pre;
+}
+
+.wordWritten {
+  opacity: 1;
+  filter: blur(0);
+  transition: opacity 0.18s linear, filter 0.18s linear;
+}
+
+.wordPending {
+  opacity: 0;
+  filter: blur(2px);
+}
+
+.wordCorrupted {
+  color: #eaffea;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.25), 0 0 16px rgba(255, 0, 0, 0.18);
+}
+
+.wordMapa {
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 0.2rem;
+  padding: 0 0.2rem;
+  margin: 0 0.08rem;
+}
+
+.wordFractal {
+  position: relative;
+  cursor: pointer;
+}
+
+.wordFractal::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.24rem;
+  width: 0.2rem;
+  height: 0.2rem;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: #00ff00;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+  animation: fractalDotPulse 1.8s ease-in-out infinite;
+}
+
+.hiddenPhrase {
+  opacity: 0.26;
+  color: rgba(255, 255, 255, 0.28);
+  transition: opacity 0.35s ease, color 0.35s ease;
+}
+
+.hiddenPhraseVisible {
+  opacity: 1;
+  color: #fff;
+}
+
+.floatingLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floatingItem {
+  position: fixed;
+  top: 100vh;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: clamp(0.66rem, 1vw, 0.78rem);
+  color: rgba(255, 255, 255, var(--deco-opacity));
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--duration);
+  animation-delay: var(--delay);
+}
+
+.floatingLeft {
+  text-align: left;
+}
+
+.floatingRight {
+  text-align: right;
+}
+
+.fractalOverlay {
+  position: fixed;
+  z-index: 10;
+  transform: translate(-50%, 0);
+  width: min(360px, 82vw);
+  max-height: 60vh;
+  overflow: auto;
+  border: 1px solid rgba(0, 255, 0, 0.45);
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 28px rgba(0, 255, 0, 0.2);
+  padding: 0.75rem;
+}
+
+.fractalWord {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #00ff00;
+  margin-bottom: 0.5rem;
+}
+
+.fractalLayer {
+  border: 1px solid rgba(0, 255, 0, 0.25);
+  margin-top: 0.4rem;
+  padding: 0.45rem;
+}
+
+.fractalTitle {
+  margin: 0 0 0.35rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.56rem;
+  color: #00ff00;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.fractalText {
+  margin: 0;
+  font-size: 0.3rem;
+  line-height: 1.32;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.wordDissolving {
+  animation: dissolve 5.4s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.thinkerCard {
+  margin: 0 0 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.thinkerMedia {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  background: #050505;
+}
+
+.thinkerImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1) contrast(1.12) brightness(0.9);
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+
+.thinkerFx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.waveLine {
+  position: absolute;
+  inset: 18% -24% auto;
+  height: 30%;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  transform-origin: center;
+  animation: waveDrift 11s ease-in-out infinite;
+}
+
+.waveLineAlt {
+  inset: auto -28% 10%;
+  opacity: 0.58;
+  animation-delay: -3.8s;
+}
+
+.atomCore {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-left: -0.225rem;
+  margin-top: -0.225rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.35);
+}
+
+.atomOrbit {
+  --tilt: 0deg;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 62%;
+  height: 46%;
+  margin-left: -31%;
+  margin-top: -23%;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+  transform-origin: center;
+  animation: atomSpin 10s linear infinite;
+}
+
+.atomOrbitOne {
+  --tilt: 0deg;
+}
+
+.atomOrbitTwo {
+  --tilt: 58deg;
+  animation-duration: 8.8s;
+}
+
+.atomOrbitThree {
+  --tilt: -58deg;
+  animation-duration: 12.3s;
+}
+
+.relativityGrid {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.14) 0,
+      rgba(255, 255, 255, 0.14) 1px,
+      transparent 1px,
+      transparent 24px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.1) 0,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 24px
+    );
+  transform: skewX(-8deg);
+  animation: relativityWarp 9s ease-in-out infinite;
+}
+
+.relativityGridAlt {
+  opacity: 0.42;
+  transform: skewX(8deg);
+  animation-delay: -3.2s;
+}
+
+.thinkerCaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 0.7rem 0.9rem 0.75rem;
+}
+
+.thinkerName {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.thinkerContext {
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cosmicCard {
+  margin: 1.2rem 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cosmicImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1) contrast(1.05);
+}
+
+.cosmicCaption {
+  padding: 0.65rem 0.9rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.aftermath {
+  height: 100vh;
+}
+
+.pdfCtaWrap {
+  margin: 0 0 3rem;
+  padding-top: 0.4rem;
+}
+
+.pdfCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(0, 255, 0, 0.32);
+  padding: 0.65rem 0.9rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.72);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.pdfCta:hover {
+  color: #00ff00;
+  border-color: rgba(0, 255, 0, 0.62);
+}
+
+.siteFooter {
+  margin-top: 2.2rem;
+  padding: 1rem 0 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.siteBrand {
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+@keyframes headerShimmer {
+  0%,
+  100% {
+    opacity: 0.93;
+    filter: blur(0px);
+    transform: translateX(0px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0.22px);
+    transform: translateX(0.45px);
+  }
+}
+
+@keyframes mapDrift {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 24px 0, 0 16px;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(-40%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes stretch {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  45% {
+    transform: scaleY(1.09);
+  }
+}
+
+@keyframes reflectionGlitch {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: scaleY(-1) translateX(3px);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scaleY(-1) translateX(0px);
+  }
+}
+
+@keyframes letterDrift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(0.015em, -0.045em);
+  }
+  70% {
+    transform: translate(-0.02em, 0.03em);
+  }
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0.95;
+  }
+  20% {
+    opacity: 0.15;
+  }
+  45% {
+    opacity: 0.7;
+  }
+  75% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0px);
+    opacity: calc(var(--deco-opacity) * 0.7);
+  }
+  15% {
+    opacity: calc(var(--deco-opacity) + 0.06);
+  }
+  100% {
+    transform: translateY(calc(-150vh * var(--deco-speed)));
+    opacity: 0;
+  }
+}
+
+@keyframes dissolve {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
+    opacity: 0.22;
+  }
+}
+
+@keyframes waveDrift {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) scaleX(1);
+  }
+  50% {
+    transform: translateX(3.5%) translateY(-7%) scaleX(1.06);
+  }
+}
+
+@keyframes atomSpin {
+  0% {
+    transform: rotate(var(--tilt));
+  }
+  100% {
+    transform: rotate(calc(var(--tilt) + 360deg));
+  }
+}
+
+@keyframes relativityWarp {
+  0%,
+  100% {
+    transform: skewX(-8deg) translateX(0);
+    opacity: 0.52;
+  }
+  50% {
+    transform: skewX(-15deg) translateX(-2%);
+    opacity: 0.76;
+  }
+}
+
+@keyframes fractalDotPulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.64;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.28);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 980px) {
+  .floatingItem {
+    opacity: calc(var(--deco-opacity) * 0.7);
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding-top: 7.2rem;
+  }
+
+  .header {
+    letter-spacing: 0.01em;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .floatingItem {
+    display: none;
+  }
+
+  .headerReflection {
+    opacity: 0.18;
+  }
+
+  .thinkerCaption {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+}
