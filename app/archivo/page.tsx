@@ -6,7 +6,21 @@ export const metadata = {
   title: "archivo — bratzche journal",
 };
 
+const experimentalEntries = [
+  {
+    slug: "autorreferencia-experimental",
+    href: "/ensayos/autorreferencia",
+    title: "Autorreferencia",
+    date: "2026-02-27",
+    tags: ["experimental", "autorreferencia", "bucle"],
+    excerpt:
+      "Ensayo vivo: observador, mapa, recursion y ruina en una interfaz que se altera al leerla.",
+  },
+] as const;
+
 export default function Archivo() {
+  const archiveEntries = [...experimentalEntries, ...pieces];
+
   return (
     <>
       <Navigation />
@@ -16,12 +30,12 @@ export default function Archivo() {
             archivo
           </h1>
           <p className="mt-4 text-[0.65rem] tracking-wide text-gris">
-            {pieces.length} piezas
+            {archiveEntries.length} piezas
           </p>
         </header>
 
         <section>
-          {pieces.map((piece, i) => (
+          {archiveEntries.map((piece, i) => (
             <PieceCard key={piece.slug} piece={piece} index={i} />
           ))}
         </section>

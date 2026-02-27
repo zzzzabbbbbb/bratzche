@@ -2,10 +2,18 @@
 
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
-import type { Piece } from "@/lib/pieces";
+
+type PieceCardEntry = {
+  slug: string;
+  title: string;
+  date: string;
+  tags: readonly string[];
+  excerpt: string;
+  href?: string;
+};
 
 interface PieceCardProps {
-  piece: Piece;
+  piece: PieceCardEntry;
   index: number;
 }
 
@@ -48,7 +56,7 @@ export default function PieceCard({ piece, index }: PieceCardProps) {
   const baseDelay = delays[index % delays.length];
 
   return (
-    <Link href={`/${piece.slug}`} className="block group">
+    <Link href={piece.href ?? `/${piece.slug}`} className="block group">
       <article
         ref={ref}
         className={`${layout} py-24 md:py-32 relative`}
