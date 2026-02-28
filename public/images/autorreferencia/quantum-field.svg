@@ -1,0 +1,19 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#020202"/>
+  <g opacity="0.7" stroke="#FFFFFF" stroke-width="1.2">
+    <path d="M140 180H1460"/>
+    <path d="M140 300H1460"/>
+    <path d="M140 420H1460"/>
+    <path d="M140 540H1460"/>
+    <path d="M140 660H1460"/>
+    <path d="M260 80V820"/>
+    <path d="M460 80V820"/>
+    <path d="M660 80V820"/>
+    <path d="M860 80V820"/>
+    <path d="M1060 80V820"/>
+    <path d="M1260 80V820"/>
+  </g>
+  <path d="M140 640C260 500 340 500 460 640C580 780 660 780 780 640C900 500 980 500 1100 640C1220 780 1300 780 1460 560" stroke="#00FF00" stroke-width="2" stroke-opacity="0.65"/>
+  <path d="M140 560C260 420 340 420 460 560C580 700 660 700 780 560C900 420 980 420 1100 560C1220 700 1300 700 1460 480" stroke="#FFFFFF" stroke-width="1.8"/>
+  <text x="80" y="845" fill="#FFFFFF" fill-opacity="0.78" font-size="38" font-family="IBM Plex Mono, Menlo, monospace">∫𝒟ϕ exp(iS[ϕ]/ℏ)</text>
+</svg>

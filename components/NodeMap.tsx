@@ -22,6 +22,19 @@ interface Edge {
   flicker: number;
 }
 
+const mapEntries = [
+  ...pieces.map((piece) => ({
+    slug: piece.slug,
+    title: piece.title,
+    tags: piece.tags,
+  })),
+  {
+    slug: "ensayos/autorreferencia",
+    title: "Autorreferencia",
+    tags: ["fisica", "matematicas"],
+  },
+];
+
 export default function NodeMap() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const nodesRef = useRef<Node[]>([]);
@@ -42,8 +55,8 @@ export default function NodeMap() {
     const cy = h / 2;
     const spread = Math.min(w, h) * 0.3;
 
-    const nodes: Node[] = pieces.map((p, i) => {
-      const angle = (i / pieces.length) * Math.PI * 2 + Math.random() * 0.5;
+    const nodes: Node[] = mapEntries.map((p, i) => {
+      const angle = (i / mapEntries.length) * Math.PI * 2 + Math.random() * 0.5;
       const dist = spread * (0.6 + Math.random() * 0.4);
       return {
         slug: p.slug,

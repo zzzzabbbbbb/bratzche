@@ -12,7 +12,7 @@ const experimentalEntries = [
     href: "/ensayos/autorreferencia",
     title: "Autorreferencia",
     date: "2026-02-27",
-    tags: ["experimental", "autorreferencia", "bucle"],
+    tags: ["fisica", "matematicas"],
     excerpt:
       "Ensayo vivo: observador, mapa, recursion y ruina en una interfaz que se altera al leerla.",
   },

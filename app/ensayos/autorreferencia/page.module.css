@@ -16,6 +16,45 @@
   margin: 0 auto;
 }
 
+.introHeader {
+  margin-bottom: clamp(4.2rem, 9vh, 6.5rem);
+}
+
+.introDate {
+  margin: 0 0 1rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.introTitle {
+  width: calc(100% + 120px);
+  margin: 0 0 1.8rem -60px;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Inter", sans-serif;
+  font-size: clamp(4.4rem, 15vw, 10rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.introTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.introTag {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 0.34rem 0.56rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .section {
   margin-bottom: clamp(5rem, 10vh, 7.5rem);
 }
@@ -57,12 +96,13 @@
   opacity: 1;
   filter: blur(0);
   transform: translateY(0);
+  transition: opacity 0.08s linear, filter 0.1s ease, transform 0.1s ease;
 }
 
 .headerGlyphPending {
   opacity: 0;
-  filter: blur(5px);
-  transform: translateY(0.25em) scale(0.98);
+  filter: blur(2px);
+  transform: translateY(0.16em) scale(0.99);
 }
 
 .headerSpace {
@@ -194,12 +234,12 @@
 .wordWritten {
   opacity: 1;
   filter: blur(0);
-  transition: opacity 0.18s linear, filter 0.18s linear;
+  transition: opacity 0.08s linear, filter 0.1s linear;
 }
 
 .wordPending {
   opacity: 0;
-  filter: blur(2px);
+  filter: blur(1px);
 }
 
 .wordCorrupted {
@@ -489,6 +529,464 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
+.equationStack {
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.equationCard {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0.6rem 0.85rem;
+}
+
+.equationCaption {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.equationWrap {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.equationVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.equationInline :global(.katex) {
+  color: #fff;
+  font-size: 1.3em;
+}
+
+.equationDisplay :global(.katex-display) {
+  margin: 0;
+  padding: 2rem 0;
+}
+
+.equationDisplay :global(.katex) {
+  color: #fff;
+  font-size: 1.6em;
+}
+
+.equationWrap:hover :global(.katex) {
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.28);
+}
+
+.visualSection {
+  position: relative;
+  margin: 3rem 0 6rem;
+  min-height: 1700px;
+  background: #000;
+  overflow: clip;
+}
+
+.visualEquationLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.visualEquationOne,
+.visualEquationTwo,
+.visualEquationThree {
+  position: absolute;
+  opacity: 0.18;
+}
+
+.visualEquationOne {
+  top: 6%;
+  right: 8%;
+  transform: rotate(-7deg);
+}
+
+.visualEquationTwo {
+  top: 47%;
+  left: 2%;
+  transform: rotate(6deg);
+}
+
+.visualEquationThree {
+  right: 6%;
+  bottom: 8%;
+  transform: rotate(-3deg);
+}
+
+.visualEquationLayer :global(.katex) {
+  color: rgba(255, 255, 255, 0.18);
+}
+
+.visualNoise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.noiseFragment {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  opacity: var(--opacity);
+  transform: rotate(var(--rot));
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.visualScaffold {
+  position: relative;
+  z-index: 4;
+  min-height: 1700px;
+  color: #fff;
+}
+
+.visualScaffold > * {
+  opacity: 0;
+  filter: blur(8px);
+}
+
+.visualSectionVisible .visualEquationLayer,
+.visualSectionVisible .visualNoise {
+  opacity: 1;
+}
+
+.visualSectionVisible .visualScaffold > * {
+  animation: visualReveal 0.75s ease forwards;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(1) {
+  animation-delay: 0.04s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(4) {
+  animation-delay: 0.22s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(5) {
+  animation-delay: 0.3s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(6) {
+  animation-delay: 0.38s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(7) {
+  animation-delay: 0.46s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(8) {
+  animation-delay: 0.54s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(9) {
+  animation-delay: 0.62s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(10) {
+  animation-delay: 0.68s;
+}
+
+.visualHeader {
+  position: absolute;
+  top: 24%;
+  left: 3%;
+  width: 86%;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  transform: rotate(-1deg);
+}
+
+.visualTitle {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(3.8rem, 12vw, 8rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.85;
+  color: #fff;
+}
+
+.visualSubtitle {
+  margin: 0;
+  max-width: 250px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #00ff7a;
+  text-align: right;
+}
+
+.dropCapsBlock {
+  position: absolute;
+  top: 3.5%;
+  left: 2%;
+  width: min(860px, 88%);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.dropCapLine {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  line-height: 1.06;
+  font-size: clamp(1.25rem, 2.8vw, 2.25rem);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.dropCap {
+  float: left;
+  margin: -0.25rem 0.35rem 0 0;
+  font-family: "Iowan Old Style", "Times New Roman", Times, serif;
+  font-size: clamp(3.8rem, 7vw, 6rem);
+  line-height: 0.82;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 255, 122, 0.28);
+}
+
+.visualParagraph {
+  position: absolute;
+  top: 34%;
+  left: 12%;
+  width: min(860px, 80%);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  line-height: 1.1;
+  font-size: clamp(1.1rem, 2.2vw, 1.7rem);
+  font-weight: 900;
+  color: #fff;
+  transform: rotate(1deg);
+}
+
+.lagrangianCard {
+  position: absolute;
+  top: 48%;
+  left: 4%;
+  width: min(640px, 58%);
+  border: 1px solid rgba(0, 255, 0, 0.42);
+  background: rgba(10, 10, 10, 0.7);
+  padding: 0.4rem 0.55rem 0.7rem;
+  transform: rotate(-2deg);
+}
+
+.lagrangianLabel {
+  margin: 0;
+  padding: 0 0 0.35rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.visualBullets {
+  margin: 0;
+  padding: 0.4rem 0 0 1.2rem;
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(0.9rem, 1.25vw, 1.12rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.visualBullets li + li {
+  margin-top: 0.3rem;
+}
+
+.diagramCaption {
+  display: inline-block;
+  margin-top: 0.2rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.wheelerFloat {
+  position: absolute;
+  top: 57%;
+  left: 2%;
+  width: min(620px, 56%);
+  margin: 0;
+  transform: rotate(-3deg);
+  z-index: 5;
+}
+
+.wheelerSvg {
+  width: 100%;
+  height: auto;
+  stroke: #fff;
+  stroke-width: 1.6;
+  fill: none;
+}
+
+.diagramCaptionNeon {
+  display: inline-block;
+  margin-top: 0.45rem;
+  color: #00a83f;
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.godelFloat {
+  position: absolute;
+  top: 53%;
+  right: 1.5%;
+  width: min(560px, 48%);
+  transform: rotate(2deg);
+  z-index: 6;
+}
+
+.godelLead {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(1.2rem, 2.1vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.godelBig {
+  display: inline-block;
+  font-size: clamp(5rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 0.9;
+  color: #fff;
+}
+
+.godelLine {
+  margin: 0.45rem 0 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.logicSymbol {
+  color: #00ff7a;
+  text-shadow: 0 0 8px rgba(0, 255, 122, 0.4);
+}
+
+.quantumGif {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.78;
+}
+
+.quantumFloat {
+  position: absolute;
+  right: 2%;
+  top: 75%;
+  width: min(560px, 42%);
+  margin: 0;
+  z-index: 3;
+  mix-blend-mode: screen;
+}
+
+.visualQuote {
+  position: absolute;
+  left: 1%;
+  top: 78%;
+  width: min(940px, 72%);
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(7.5rem, 13vw, 10rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  color: #00b843;
+  text-shadow: 0 0 14px rgba(0, 255, 0, 0.22);
+  z-index: 7;
+}
+
+.arrowDoodle {
+  position: absolute;
+  left: 8%;
+  top: 93%;
+  width: min(650px, 58%);
+  height: auto;
+  stroke: #0d8c36;
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 7 7;
+  z-index: 8;
+}
+
+.codeFloat {
+  margin: 0;
+  position: absolute;
+  width: min(460px, 38%);
+  padding: 0.7rem 0.8rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.64rem;
+  line-height: 1.5;
+  color: #00ff7a;
+  border: 1px dashed rgba(0, 255, 122, 0.45);
+  background: rgba(17, 17, 17, 0.92);
+  overflow-x: auto;
+  z-index: 9;
+}
+
+.codeFloatA {
+  left: 2%;
+  bottom: 1.4%;
+  transform: rotate(-3deg);
+}
+
+.codeFloatB {
+  right: 3%;
+  bottom: 3.5%;
+  transform: rotate(2deg);
+}
+
+.lagrangianCard :global(.katex) {
+  color: #fff;
+  font-size: 1.14em;
+}
+
+.lagrangianCard :global(.katex-display) {
+  margin: 0;
+  padding: 0.75rem 0 0.4rem;
+}
+
 .aftermath {
   height: 100vh;
 }
@@ -683,6 +1181,29 @@
   }
 }
 
+@keyframes titleLoop {
+  0%,
+  100% {
+    transform: perspective(500px) rotateX(0deg) rotateY(0deg);
+    text-shadow: 0 0 0 rgba(0, 255, 0, 0);
+  }
+  50% {
+    transform: perspective(500px) rotateX(5deg) rotateY(-6deg);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.25);
+  }
+}
+
+@keyframes visualReveal {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
 @media (max-width: 980px) {
   .floatingItem {
     opacity: calc(var(--deco-opacity) * 0.7);
@@ -692,6 +1213,12 @@
 @media (max-width: 768px) {
   .page {
     padding-top: 7.2rem;
+  }
+
+  .introTitle {
+    width: 100%;
+    margin-left: 0;
+    font-size: clamp(3rem, 19vw, 5.5rem);
   }
 
   .header {
@@ -716,5 +1243,105 @@
 
   .cosmicGallery {
     grid-template-columns: 1fr;
+  }
+
+  .visualSection {
+    min-height: auto;
+    margin: 2.1rem 0 4rem;
+  }
+
+  .visualEquationLayer,
+  .visualNoise {
+    display: none;
+  }
+
+  .visualScaffold {
+    min-height: auto;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .dropCapsBlock,
+  .visualHeader,
+  .visualParagraph,
+  .lagrangianCard,
+  .wheelerFloat,
+  .godelFloat,
+  .quantumFloat,
+  .visualQuote,
+  .arrowDoodle,
+  .codeFloat {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    max-width: none;
+    transform: none;
+    filter: none;
+    opacity: 1;
+    animation: none;
+  }
+
+  .visualTitle {
+    font-size: clamp(2.5rem, 16vw, 4.2rem);
+  }
+
+  .visualSubtitle {
+    font-size: 1.2rem;
+    text-align: left;
+    max-width: none;
+  }
+
+  .dropCapLine {
+    font-size: clamp(1.02rem, 5.2vw, 1.4rem);
+  }
+
+  .visualParagraph {
+    font-size: clamp(0.95rem, 4.7vw, 1.35rem);
+  }
+
+  .lagrangianLabel {
+    font-size: 1.05rem;
+  }
+
+  .visualBullets {
+    font-size: 0.88rem;
+  }
+
+  .wheelerSvg {
+    min-height: 180px;
+  }
+
+  .godelLead {
+    font-size: 1.05rem;
+  }
+
+  .godelLine {
+    font-size: 0.92rem;
+  }
+
+  .visualQuote {
+    font-size: clamp(3.5rem, 17vw, 5.3rem);
+    line-height: 0.84;
+  }
+
+  .arrowDoodle {
+    width: 86%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .quantumFloat {
+    mix-blend-mode: normal;
+  }
+
+  .codeFloat {
+    font-size: 0.54rem;
+  }
+
+  .dropCap {
+    font-size: 2.6rem;
   }
 }

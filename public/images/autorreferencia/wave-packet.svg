@@ -1,0 +1,16 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#020202"/>
+  <path d="M0 450C120 450 180 290 300 290C420 290 480 610 600 610C720 610 780 290 900 290C1020 290 1080 610 1200 610C1320 610 1380 450 1600 450" stroke="#FFFFFF" stroke-width="2"/>
+  <path d="M0 450C150 450 220 360 300 360C380 360 450 540 600 540C750 540 820 360 900 360C980 360 1050 540 1200 540C1350 540 1420 450 1600 450" stroke="#00FF00" stroke-opacity="0.45" stroke-width="1.6"/>
+  <g opacity="0.55" stroke="#FFFFFF" stroke-width="1">
+    <line x1="80" y1="120" x2="80" y2="780"/>
+    <line x1="280" y1="120" x2="280" y2="780"/>
+    <line x1="480" y1="120" x2="480" y2="780"/>
+    <line x1="680" y1="120" x2="680" y2="780"/>
+    <line x1="880" y1="120" x2="880" y2="780"/>
+    <line x1="1080" y1="120" x2="1080" y2="780"/>
+    <line x1="1280" y1="120" x2="1280" y2="780"/>
+    <line x1="1480" y1="120" x2="1480" y2="780"/>
+  </g>
+  <text x="70" y="840" fill="#FFFFFF" fill-opacity="0.75" font-size="40" font-family="IBM Plex Mono, Menlo, monospace">ψ(x,t)=A e^{-(x-vt)²/2σ²}e^{i(kx-ωt)}</text>
+</svg>

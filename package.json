@@ -12,9 +12,11 @@
     "@google-analytics/data": "^5.2.1",
     "@next/third-parties": "^16.1.6",
     "@vercel/analytics": "^1.6.1",
+    "katex": "^0.16.33",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-katex": "^3.1.0",
     "react-pdf": "^10.4.1"
   },
   "devDependencies": {

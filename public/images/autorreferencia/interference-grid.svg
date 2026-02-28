@@ -1,0 +1,27 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#020202"/>
+  <g opacity="0.7" stroke="#FFFFFF" stroke-width="1.1">
+    <path d="M160 120H1440"/>
+    <path d="M160 210H1440"/>
+    <path d="M160 300H1440"/>
+    <path d="M160 390H1440"/>
+    <path d="M160 480H1440"/>
+    <path d="M160 570H1440"/>
+    <path d="M160 660H1440"/>
+    <path d="M160 750H1440"/>
+    <path d="M240 60V840"/>
+    <path d="M380 60V840"/>
+    <path d="M520 60V840"/>
+    <path d="M660 60V840"/>
+    <path d="M800 60V840"/>
+    <path d="M940 60V840"/>
+    <path d="M1080 60V840"/>
+    <path d="M1220 60V840"/>
+    <path d="M1360 60V840"/>
+  </g>
+  <g opacity="0.65" stroke="#00FF00" stroke-width="1.5">
+    <path d="M160 760C300 610 460 610 600 760C740 910 900 910 1040 760C1180 610 1300 610 1440 760"/>
+    <path d="M160 700C300 550 460 550 600 700C740 850 900 850 1040 700C1180 550 1300 550 1440 700"/>
+  </g>
+  <text x="60" y="850" fill="#FFFFFF" fill-opacity="0.75" font-size="34" font-family="IBM Plex Mono, Menlo, monospace">∇·E=ρ/ε₀   ∇×B=μ₀J+μ₀ε₀∂E/∂t</text>
+</svg>

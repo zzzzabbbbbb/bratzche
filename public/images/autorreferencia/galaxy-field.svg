@@ -1,0 +1,25 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#030303"/>
+  <g opacity="0.65" stroke="#ffffff" stroke-width="1.2">
+    <path d="M120 450C360 120 1240 120 1480 450"/>
+    <path d="M120 450C360 780 1240 780 1480 450"/>
+    <path d="M240 450C430 220 1170 220 1360 450"/>
+    <path d="M240 450C430 680 1170 680 1360 450"/>
+    <path d="M350 450C500 300 1100 300 1250 450"/>
+    <path d="M350 450C500 600 1100 600 1250 450"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.92">
+    <circle cx="800" cy="450" r="10"/>
+    <circle cx="920" cy="365" r="4"/>
+    <circle cx="1015" cy="500" r="3"/>
+    <circle cx="640" cy="360" r="3.5"/>
+    <circle cx="540" cy="500" r="3"/>
+    <circle cx="1120" cy="420" r="3"/>
+    <circle cx="420" cy="430" r="2.5"/>
+  </g>
+  <g opacity="0.35" stroke="#00FF00" stroke-width="1">
+    <line x1="0" y1="450.5" x2="1600" y2="450.5"/>
+    <line x1="800.5" y1="0" x2="800.5" y2="900"/>
+  </g>
+  <text x="56" y="840" fill="#FFFFFF" fill-opacity="0.75" font-size="40" font-family="IBM Plex Mono, Menlo, monospace">ρ(r)=ρ₀e^{-r/R}</text>
+</svg>
