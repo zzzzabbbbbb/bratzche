@@ -394,6 +394,7 @@ export default function AutorreferenciaPage() {
   const [showIIIHeader, setShowIIIHeader] = useState(false);
   const [revealedPhrases, setRevealedPhrases] = useState<string[]>([]);
   const [visualVisible, setVisualVisible] = useState(false);
+  const [isCompactViewport, setIsCompactViewport] = useState(false);
   const [fractalPopup, setFractalPopup] = useState<{
     x: number;
     y: number;
@@ -492,6 +493,14 @@ export default function AutorreferenciaPage() {
   }, [revealPhrase]);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1024px), (pointer: coarse)");
+    const updateViewportMode = () => setIsCompactViewport(mediaQuery.matches);
+    updateViewportMode();
+    mediaQuery.addEventListener("change", updateViewportMode);
+    return () => mediaQuery.removeEventListener("change", updateViewportMode);
+  }, []);
+
+  useEffect(() => {
     const node = visualSectionRef.current;
     if (!node || visualVisible) return;
 
@@ -538,7 +547,7 @@ export default function AutorreferenciaPage() {
             viii: getProgress("viii"),
           };
           const changed = (Object.keys(next) as SectionId[]).some(
-            (key) => Math.abs(prev[key] - next[key]) > 0.005
+            (key) => Math.abs(prev[key] - next[key]) > 0.02
           );
           return changed ? next : prev;
         });
@@ -801,36 +810,52 @@ export default function AutorreferenciaPage() {
 
   const renderHeader = useCallback(
     (section: EssaySection): ReactNode => {
-      const titleChars = section.title.split("");
+      const titleWords = section.title.split(" ");
+      const totalGlyphs = titleWords.reduce((sum, word) => sum + word.length, 0);
       const writeProgress = writeProgressForHeader(section.id);
       const glyphs = (
         keyPrefix: string,
         extraClass?: string,
         styleForIndex?: (index: number) => CSSProperties
-      ) =>
-        titleChars.map((char, index) => {
-          if (char === " ") {
+      ) => {
+        let seenGlyphs = 0;
+        return titleWords.flatMap((word, wordIndex) => {
+          const charNodes = word.split("").map((char, charIndex) => {
+            seenGlyphs += 1;
+            const globalIndex = seenGlyphs - 1;
+            const revealIndex = totalGlyphs > 0 ? seenGlyphs / totalGlyphs : 1;
+            const isWritten = writeProgress >= revealIndex;
+            const classes = [styles.headerGlyph];
+            classes.push(isWritten ? styles.headerGlyphWritten : styles.headerGlyphPending);
+            if (extraClass) classes.push(extraClass);
             return (
-              <span key={`${keyPrefix}-space-${index}`} className={styles.headerSpace}>
+              <span
+                key={`${keyPrefix}-char-${wordIndex}-${charIndex}`}
+                className={classes.join(" ")}
+                style={styleForIndex?.(globalIndex)}
+              >
+                {char}
+              </span>
+            );
+          });
+
+          const nodes: ReactNode[] = [
+            <span key={`${keyPrefix}-word-${wordIndex}`} className={styles.headerWord}>
+              {charNodes}
+            </span>,
+          ];
+
+          if (wordIndex < titleWords.length - 1) {
+            nodes.push(
+              <span key={`${keyPrefix}-space-${wordIndex}`} className={styles.headerSpace}>
                 {" "}
               </span>
             );
           }
-          const revealIndex = titleChars.length > 0 ? (index + 1) / titleChars.length : 1;
-          const isWritten = writeProgress >= revealIndex;
-          const classes = [styles.headerGlyph];
-          classes.push(isWritten ? styles.headerGlyphWritten : styles.headerGlyphPending);
-          if (extraClass) classes.push(extraClass);
-          return (
-            <span
-              key={`${keyPrefix}-char-${index}`}
-              className={classes.join(" ")}
-              style={styleForIndex?.(index)}
-            >
-              {char}
-            </span>
-          );
+
+          return nodes;
         });
+      };
 
       if (section.id === "iv") {
         return (
@@ -1167,10 +1192,14 @@ export default function AutorreferenciaPage() {
                     {section.paragraphs.map((paragraph, paragraphIndex) => {
                       const isLastDissolvingParagraph =
                         section.id === "viii" && paragraphIndex === section.paragraphs.length - 1;
+                      const isStaticSection =
+                        section.id === "i" || section.id === "ii" || section.id === "iii";
 
                       return (
                         <p key={`${section.id}-${paragraphIndex}`}>
-                          {section.id === "iv"
+                          {isStaticSection || isCompactViewport
+                            ? paragraph
+                            : section.id === "iv"
                             ? renderHiddenPhrases(paragraph, paragraphIndex)
                             : isLastDissolvingParagraph
                             ? renderDissolvingParagraph(paragraph)
