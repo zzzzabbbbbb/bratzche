@@ -36,6 +36,14 @@ type PhraseConfig = {
   text: string;
 };
 
+type CosmicImage = {
+  id: string;
+  section: SectionId;
+  src: string;
+  alt: string;
+  caption: string;
+};
+
 type ThinkerMotif = "wave" | "atom" | "relativity";
 
 type ThinkerPortrait = {
@@ -50,83 +58,103 @@ type ThinkerPortrait = {
 const SECTIONS: EssaySection[] = [
   {
     id: "i",
-    title: "I. La efectividad irrazonable",
+    title: "I. El lenguaje sin cuerpo",
     paragraphs: [
-      "La física moderna no usa matemáticas. Depende de ellas. Y no de las matemáticas que se inventaron para describir el mundo, sino de desarrollos abstractos que no tenían intención empírica.",
-      "Los números complejos surgieron como curiosidad algebraica. Terminaron siendo el lenguaje de la mecánica cuántica. La geometría diferencial era ejercicio puro. Se convirtió en la arquitectura de la relatividad general. Una y otra vez, estructuras formales desarrolladas sin contacto con la física terminan siendo exactamente lo que la física necesita.",
-      "Eugene Wigner lo llamó \"la efectividad irrazonable de las matemáticas\". No es solo que funcionen. Es que no deberían funcionar tan bien.",
-      "Una interpretación: las matemáticas son el repertorio de todas las estructuras coherentes posibles. El universo físico realiza algunas de ellas. Cuando detectamos correspondencia, no imponemos forma arbitraria. Identificamos coincidencia estructural.",
-      "La noción de invarianza es clave. En física, una cantidad invariante bajo transformaciones señala algo constitutivo, no descriptivo. La velocidad de la luz no depende del sistema de referencia. Esa independencia indica que estamos tocando estructura real, no proyectando convención.",
-      "No se trata de afirmar que el universo \"es\" matemáticas. Se trata de reconocer que su coherencia es capturable matemáticamente. Y eso, por sí solo, ya es extraño.",
+      "Las matematicas no pesan. No ocupan espacio. No tienen temperatura ni duracion ni color. Son entidades sin carne, relaciones puras, estructuras que existen en ningun lugar. Y sin embargo, cuando el universo quiere decirse a si mismo con precision, habla en matematicas. Ahi hay algo que no cierra. Ahi hay pregunta.",
+      "En un ensayo anterior llegue a una conclusion que me dio serenidad. Si todo es campo, si las particulas son excitaciones, si lo que llamamos materia es vibracion organizada del vacio cuantico, entonces el \"yo\" no es sustancia. Es configuracion transitoria. Patron que emerge y se disuelve. No hay nucleo metafisico escondido detras del fenomeno. Solo estructura dinamica. Eso bastaba. Eso era suficiente.",
+      "Pero quedo una grieta que no cerre. ?Por que la estructura es capturable matematicamente? ?Por que abstracciones desarrolladas sin contacto con el mundo fisico terminan describiendo el mundo fisico con precision absurda?",
+      "Considera pi. Un numero que emerge de la relacion entre circunferencia y diametro. Geometria pura. Pero pi aparece en la ecuacion de Euler, en la distribucion normal de probabilidad, en las ecuaciones de campo de Einstein, en la funcion de onda de la mecanica cuantica, en la formula de Stirling, en la teoria de cuerdas. Un circulo no tiene nada que ver con la probabilidad de que una particula este en cierto lugar. Y sin embargo, pi esta ahi. Como si el numero supiera algo que nosotros no sabemos.",
+      "O phi, la proporcion aurea. 1.618... Un numero que surge de una simple relacion recursiva: la razon entre el todo y la parte mayor es igual a la razon entre la parte mayor y la menor. Abstraccion algebraica. Pero phi aparece en la filotaxis de las plantas, en la espiral de las galaxias, en la proporcion de los huesos de la mano, en la estructura de los cuasicristales. La naturaleza parece preferir ciertas proporciones. No cualquier numero. Estos numeros.",
+      "O e, la base del logaritmo natural. 2.718... Definido como el limite de (1 + 1/n)^n cuando n tiende a infinito. Abstraccion del calculo. Pero e gobierna el decaimiento radiactivo, el crecimiento poblacional, la distribucion de energia en sistemas termicos, la descarga de un capacitor, la forma de una cuerda colgante. Procesos que no tienen relacion aparente entre si, gobernados por el mismo numero.",
+      "Eugene Wigner, fisico, premio Nobel, escribio un ensayo en 1960: \"La irrazonable efectividad de las matematicas en las ciencias naturales\". No es solo que las matematicas funcionen, decia. Es que no deberian funcionar tan bien. La correspondencia es \"un regalo maravilloso que no entendemos ni merecemos\".",
+      "Los numeros complejos surgieron en el siglo XVI como truco algebraico para resolver ecuaciones cubicas. Numeros \"imaginarios\", los llamaron. Absurdos. Juegos formales sin referente. Cuatrocientos anos despues, resulta que la mecanica cuantica no puede formularse sin ellos. La funcion de onda es compleja. No como aproximacion. Como estructura fundamental. El universo, en su nivel mas basico, requiere numeros que inventamos para resolver puzzles algebraicos.",
+      "La geometria diferencial era ejercicio puro cuando Riemann la desarrollo en el siglo XIX. Curvaturas de espacios abstractos. Nadie pensaba en fisica. Sesenta anos despues, Einstein descubre que la gravedad no es fuerza sino curvatura del espacio-tiempo. Necesitaba un lenguaje para describir espacios curvos. El lenguaje ya existia. Los matematicos lo habian construido sin saber para que servia.",
+      "Esto se repite una y otra vez. Las matematicas llegan primero. La fisica las encuentra despues. Como si los matematicos estuvieran explorando un territorio que la naturaleza ya habitaba.",
+      "Una interpretacion: las matematicas son el catalogo de todas las estructuras coherentes posibles. Todo lo que no se contradice a si mismo. El universo fisico realiza algunas de esas estructuras. Cuando encontramos correspondencia, no estamos imponiendo forma arbitraria sobre el caos. Estamos detectando coincidencia estructural. El universo tiene la estructura que tiene, y esa estructura es matematicamente expresable porque las matematicas son el lenguaje de toda estructura posible.",
+      "La nocion de invarianza es clave. En fisica, buscamos lo que no cambia cuando cambiamos la perspectiva. La velocidad de la luz es la misma en todo sistema de referencia. La carga del electron es la misma en todo lugar del universo. Las leyes de la fisica son las mismas hoy que hace mil millones de anos. Estas invariancias no son convenciones. Son senales de que tocamos algo real. Algo que no depende de nosotros.",
+      "Pero aqui viene la torsion. La mente que detecta invariancias es ella misma una configuracion del universo. Los campos que describimos con ecuaciones son los mismos campos que constituyen el cerebro que escribe las ecuaciones. No hay un afuera. El sistema esta describiendose a si mismo.",
+      "Y eso, eso es lo que no cerre en el ensayo anterior. Dije que somos campo. Que somos vibracion. Que somos estructura. Pero no pregunte que significa que la estructura se modele a si misma. Que pasa cuando el mapa esta dentro del territorio. Que limites aparecen cuando el observador es parte de lo observado.",
+      "Ese es el tema de este ensayo. No que es el universo. Sino que pasa cuando una parte del universo intenta contener el todo.",
     ],
   },
   {
     id: "ii",
     title: "II. El mapa y el territorio",
     paragraphs: [
-      "Borges escribió sobre un imperio que desarrolló la cartografía hasta tal punto que el mapa alcanzó el tamaño del territorio. Coincidía punto por punto. Era perfecto. Y por eso era inútil. Las generaciones siguientes lo abandonaron. Se desintegró. Solo quedaron ruinas en los desiertos.",
-      "El cuento es sobre la ciencia. Sobre cualquier proyecto de representación total.",
-      "Queremos el mapa completo del universo. La teoría del todo. La ecuación que contenga todas las ecuaciones. Pero hay un problema que Borges no explicita: el cartógrafo está en el territorio.",
-      "Si el mapa debe ser completo, debe incluir al cartógrafo. Y al cartógrafo haciendo el mapa. Y al mapa que incluye al cartógrafo haciendo el mapa. Regresión infinita. El mapa perfecto no es difícil. Es incoherente.",
-      "No es límite técnico. Es geometría. El sistema que intenta contenerse a sí mismo encuentra que la operación de clausura genera más sistema. No hay borde. El borde retrocede.",
+      "Borges escribio sobre un imperio donde la cartografia alcanzo tal perfeccion que el mapa llego a tener el tamano exacto del territorio. Coincidia punto por punto. Era perfecto. Y por eso era inutil. Las generaciones siguientes lo abandonaron. Se desintegro. Solo quedaron ruinas en los desiertos, habitadas por animales y mendigos.",
+      "El cuento parece sobre la futilidad del exceso. Pero es sobre algo mas profundo. Es sobre la imposibilidad logica de la representacion total.",
+      "Si el mapa debe representar el territorio completamente, debe incluir todo lo que esta en el territorio. Pero el cartografo esta en el territorio. Y el mapa esta en el territorio. Para ser completo, el mapa debe incluir al cartografo haciendo el mapa. Y al mapa que incluye al cartografo. Y al mapa que incluye al mapa que incluye al cartografo.",
+      "La regresion no termina. No porque nos falte papel. Porque la operacion de clausura genera mas sistema. Cada intento de cerrar abre. El borde retrocede.",
+      "No es limite tecnico. Es geometria. La estructura del problema impide la estructura de la solucion.",
+      "El proyecto cientifico es hacer el mapa del universo. La teoria del todo. La ecuacion que contenga todas las ecuaciones. Pero el cientifico esta en el universo. El cerebro que formula la teoria esta hecho de los mismos campos que la teoria describe. Para que la teoria sea completa, debe incluir al cerebro formulando la teoria. Y eso cambia lo que la teoria debe incluir.",
+      "El mapa de Borges no es metafora. Es estructura. Y la estructura dice: la representacion total desde dentro es incoherente.",
     ],
   },
   {
     id: "iii",
     title: "III. El universo participativo",
     paragraphs: [
-      "John Archibald Wheeler fue uno de los físicos más importantes del siglo XX. Trabajó con Bohr, fue mentor de Feynman, acuñó los términos \"agujero negro\" y \"agujero de gusano\". En sus últimos años propuso algo más radical que cualquier ecuación.",
-      "El universo, dijo Wheeler, no existe de forma definida hasta que es observado.",
-      "No en sentido místico. En sentido físico. El experimento de elección retardada lo sugiere: decisiones tomadas ahora determinan lo que \"ocurrió\" antes. Un fotón emitido hace miles de millones de años no tiene trayectoria definida hasta que una medición presente la fija. El pasado no está ahí esperando ser descubierto. Se constituye retroactivamente.",
-      "Wheeler lo llamó \"it from bit\". La realidad física emerge de actos de observación. No es que la materia produzca información. Es que la información constituye la materia. El universo no es una máquina que existe y luego es observada. Es un proceso que se define en el observar.",
-      "Pero el observador es parte del universo. No hay afuera. No hay plataforma externa desde la cual mirar. El sistema se construye a sí mismo a través de sus propias partes. Se levanta tirando de sus propios cordones.",
-      "Wheeler dibujó un diagrama: un ojo mirando hacia atrás en el tiempo, y la línea de visión curvándose hasta llegar al propio ojo. El universo observándose a sí mismo para existir.",
+      "John Archibald Wheeler fue uno de los fisicos mas importantes del siglo XX. Trabajo con Bohr en los fundamentos de la mecanica cuantica. Fue mentor de Feynman. Acuno los terminos \"agujero negro\" y \"agujero de gusano\". Contribuyo a la fision nuclear, a la teoria de la gravedad, a la geometrodinamica. No era un mistico. Era un fisico riguroso, de los duros.",
+      "En sus ultimos anos propuso algo que suena a metafisica pero que el formulo como fisica: el universo no existe de forma completamente definida hasta que es observado.",
+      "No en sentido vago. En sentido tecnico. La mecanica cuantica dice que los sistemas existen en superposicion de estados hasta que una medicion los colapsa en un estado definido. Wheeler llevo esto al extremo: si todo es cuantico, si no hay un nivel \"clasico\" fundamental, entonces la definicion del universo requiere observacion.",
+      "El experimento de eleccion retardada lo ilustra. Un foton viaja. Antes de que llegue al detector, decides que tipo de medicion haras. Tu decision presente parece determinar que \"hizo\" el foton en el pasado. No es que cambie el pasado. Es que el pasado no estaba definido hasta que tu medicion lo fijo.",
+      "Wheeler lo extendio cosmologicamente. Observaciones presentes participan en la definicion del universo temprano. No viajan hacia atras en el tiempo. Pero el pasado no tiene propiedades definidas hasta que el presente las ancla. El universo se construye retroactivamente.",
+      "Wheeler dibujo un diagrama famoso: un U grande, con un ojo en un extremo mirando hacia el otro extremo. La linea de vision se curva hasta que el ojo se ve a si mismo. El universo observandose para existir.",
+      "\"It from bit\", lo llamo. La realidad fisica emerge de actos de observacion, de respuestas a preguntas binarias, de informacion. No es que la materia produzca informacion como subproducto. Es que la informacion constituye la materia. El bit antes que el it.",
+      "Pero el observador es parte del universo. No hay un afuera desde donde mirar. El sistema se construye a si mismo a traves de sus propias partes. Se levanta tirando de sus propios cordones.",
+      "Esto no es misticismo. Es una posibilidad fisica tomada en serio. Y si es cierta, la idea de un \"estado del universo\" independiente del observador es incoherente. No hay vista desde ningun lugar. Solo vistas desde lugares que son parte de lo visto.",
     ],
   },
   {
     id: "iv",
-    title: "IV. Gödel en el cosmos",
+    title: "IV. Godel en el cosmos",
     paragraphs: [
-      "Kurt Gödel demostró en 1931 que cualquier sistema formal suficientemente poderoso contiene proposiciones verdaderas que no pueden demostrarse dentro del sistema. No por falta de ingenio. Por estructura. El sistema que intenta capturarse a sí mismo genera enunciados que lo exceden.",
-      "Alfred Tarski demostró algo análogo para la verdad: ningún lenguaje puede definir completamente su propio concepto de verdad sin caer en paradoja. La verdad del sistema requiere un metalenguaje. Pero el metalenguaje genera el mismo problema un nivel arriba.",
-      "La física cuántica sugiere una limitación paralela: no existe observador completamente externo cuando el observador forma parte del sistema observado. La medición perturba. El instrumento interactúa. No hay mirada inocente.",
-      "No son analogías superficiales. Son convergencias estructurales. Gödel, Tarski, Wheeler, Bohr. Distintos campos, mismo límite: el sistema suficientemente complejo para modelarse a sí mismo encuentra que el modelado genera exceso. Siempre queda resto.",
-      "Aplicado aquí: el universo genera configuraciones capaces de modelar el universo. Esas configuraciones son parte del universo. Para que el modelo sea completo, debe incluirse a sí mismo modelando. Pero incluirse cambia lo que se modela. El mapa que contiene al cartógrafo contiene un mapa que contiene al cartógrafo que contiene un mapa.",
-      "La clausura no falla. Regresa.",
+      "En 1931, Kurt Godel, un logico austriaco de 25 anos, demostro algo que cambio para siempre la filosofia de las matematicas. Cualquier sistema formal suficientemente poderoso para expresar la aritmetica basica contiene proposiciones verdaderas que no pueden demostrarse dentro del sistema.",
+      "No es que no las hayamos encontrado todavia. No es que necesitemos matematicos mas inteligentes. Es que la estructura del sistema lo impide. Hay verdades que el sistema puede expresar pero no puede probar. Y si intentas agregar esas verdades como axiomas, surgen nuevas proposiciones indecidibles. La incompletitud no se repara. Es constitutiva.",
+      "Godel lo demostro construyendo una proposicion que dice, esencialmente, \"esta proposicion no es demostrable en este sistema\". Si fuera demostrable, seria falsa, y el sistema seria inconsistente. Si no es demostrable, es verdadera, y el sistema es incompleto. No hay salida.",
+      "Alfred Tarski demostro algo analogo para la verdad: ningun lenguaje puede definir completamente su propio predicado de verdad sin caer en paradoja. Para hablar de la verdad de un lenguaje necesitas un metalenguaje. Pero el metalenguaje tiene el mismo problema un nivel arriba.",
+      "Estos no son puzzles curiosos. Son limites estructurales. El sistema suficientemente complejo para referirse a si mismo encuentra que la autorreferencia genera exceso. Siempre queda resto.",
+      "La fisica cuantica sugiere una limitacion analoga. No existe observador completamente externo. La medicion perturba. El instrumento interactua con lo medido. No hay forma de saber el estado del sistema sin cambiar el estado del sistema. El observador esta dentro.",
+      "Godel, Tarski, Heisenberg. Logica, semantica, fisica. Distintos dominios, misma estructura: el sistema que intenta capturarse a si mismo encuentra que la captura genera mas sistema. La clausura no falla. Regresa.",
+      "Aplicado al proyecto de conocimiento total: el universo genera configuraciones capaces de modelar el universo. Pero esas configuraciones son parte del universo. Para que el modelo sea completo, debe incluirse a si mismo modelando. Y eso cambia lo que debe incluir. Y eso requiere incluirse de nuevo. El mapa que contiene al cartografo que contiene un mapa.",
+      "No hay cierre. Hay bucle.",
     ],
   },
   {
     id: "v",
-    title: "V. Bootstrap ontológico",
+    title: "V. Bootstrap ontologico",
     paragraphs: [
-      "Wheeler sugirió que el universo se \"bootstrapea\". No hay causa primera. No hay fundamento que sostenga todo lo demás. El sistema emerge de sí mismo. Se autoconstituye.",
-      "Esto es perturbador porque viola la intuición causal. Queremos cadenas: esto causa aquello, que causa lo otro, hasta llegar a algo que no necesita causa. Un fundamento. Un primer motor. Dios, o las leyes físicas, o las matemáticas, o lo que sea que no requiera explicación ulterior.",
-      "Pero Wheeler apunta a otra posibilidad: no hay fondo. La cadena no termina en un ancla. Termina en un bucle. El efecto participa en su propia causa. El observador constituye lo observado, pero el observador es parte de lo observado. El sistema se sostiene a sí mismo no porque tenga base, sino porque la estructura es circular.",
-      "Esto no es misticismo. Es una posibilidad lógica. Los sistemas autopoiéticos existen. La vida se sostiene a sí misma sin necesitar un \"afuera\" que la mantenga. La pregunta es si el universo entero podría tener esa estructura.",
-      "Y si la tiene, entonces la búsqueda de fundamento es como buscar el borde de una esfera. Puedes caminar para siempre. Nunca llegas.",
+      "Wheeler sugirio que el universo se \"bootstrapea\". No hay causa primera. No hay fundamento que sostenga todo lo demas sin necesitar soporte. El sistema emerge de si mismo. Se autoconstituye.",
+      "Esto viola la intuicion causal profundamente. Queremos cadenas. Esto causa aquello, que causa lo otro, hasta llegar a algo que no necesita causa. Un primer motor. Un fundamento. Algo que simplemente es, sin requerir explicacion.",
+      "Pero Wheeler apunta a otra posibilidad: la cadena no termina en ancla. Termina en bucle. El efecto participa en su causa. El observador constituye lo observado, pero el observador es producto de lo observado. El sistema se sostiene no porque tenga base sino porque la estructura es circular.",
+      "Los sistemas autopoiéticos existen. Una celula se produce a si misma. Una llama se mantiene a si misma. La vida se sostiene sin necesitar un \"afuera\" que la empuje. No es magia. Es una forma de organizacion donde el producto es tambien el productor.",
+      "?Podria el universo entero tener esa estructura? ?Un sistema que se produce a si mismo, que se observa a si mismo, que se constituye a si mismo, sin exterior, sin fundamento, sin antes?",
+      "Si es asi, la pregunta \"?que causo el universo?\" es malformada. Asume que hay un afuera desde donde vino. Asume que hay un antes. Pero si el universo es autoconstitutivo, no hay afuera. El \"antes\" es parte del sistema, no su origen.",
+      "Buscar el fundamento seria entonces como buscar el borde de una esfera caminando por su superficie. Puedes caminar para siempre. Nunca llegas al borde. No porque sea infinita. Porque la forma no tiene borde.",
     ],
   },
   {
     id: "vi",
-    title: "VI. El yo como ilusión de exterioridad",
+    title: "VI. El yo como ilusion de exterioridad",
     paragraphs: [
-      "Aquí es donde la cosa se vuelve personal.",
-      "Si el observador constituye lo observado, y el observador es parte de lo observado, entonces ¿qué es el observador?",
-      "Una posibilidad: el \"yo\" es la ilusión de exterioridad que el sistema necesita para operar. Para observar, tiene que haber un \"desde donde\". Pero no lo hay. Entonces el sistema genera la ficción de un punto de vista externo. Esa ficción es el yo.",
-      "No eres una entidad que mira el universo. Eres el gesto mediante el cual el universo simula tener borde. La sensación de ser alguien separado, mirando desde afuera, es el truco que permite que la observación ocurra. Sin esa ilusión, no hay medición. Sin medición, no hay definición. Sin definición, no hay universo.",
-      "El yo no es el fundamento. Es el síntoma de que no hay fundamento. Es la marca de la incompletitud, no su solución.",
-      "Hofstadter lo llamó \"bucle extraño\". Un patrón que se modela a sí mismo con suficiente resolución para generar la ilusión de un observador. Pero el patrón no está fuera del sistema. Es el sistema doblándose. Y la doblez no puede ver que es doblez porque verse requeriría otra doblez.",
+      "Si el observador constituye lo observado, y el observador es parte de lo observado, entonces ?que es el observador?",
+      "Douglas Hofstadter, en \"Godel, Escher, Bach\" y \"I Am a Strange Loop\", propone que el yo es un bucle extrano. Un patron que surge cuando un sistema se modela a si mismo con suficiente resolucion. El cerebro construye un modelo del mundo. En algun punto, el modelo incluye al modelador. Ese gesto recursivo genera la ilusion de un \"yo\" que mira desde afuera.",
+      "Pero no hay afuera. El yo no es una entidad que observa el sistema. Es el sistema doblandose para verse. La sensacion de ser alguien separado, mirando desde un punto privilegiado, es un artefacto del bucle. Necesario para operar. Pero no real en el sentido que creemos.",
+      "El yo es la ilusion de exterioridad que el sistema necesita para funcionar. Para observar, tiene que haber un \"desde donde\". Pero no lo hay. Entonces el sistema genera la ficcion de un punto de vista externo. Esa ficcion es el yo.",
+      "No eres el observador del universo. Eres el gesto mediante el cual el universo simula tener borde. La sensacion de ser alguien separado es el truco que permite que la observacion ocurra. Sin esa ilusion, no hay medicion. Sin medicion, no hay definicion.",
+      "El yo no es el fundamento. Es el sintoma de que no hay fundamento. Es la marca de la incompletitud, no su solucion.",
+      "Esto no es depresivo. Es estructural. El yo sigue funcionando. Sigues experimentando, decidiendo, viviendo. Pero la creencia de que hay un \"tu\" separado del universo mirandolo desde afuera es exactamente eso: una creencia. Una construccion necesaria. Un pliegue que se cree separado del papel.",
     ],
   },
   {
     id: "vii",
     title: "VII. Ruinas del mapa",
     paragraphs: [
-      "Volvamos a Borges. El mapa que coincide con el territorio se desintegra. Las generaciones siguientes lo abandonan. Solo quedan ruinas en los desiertos.",
-      "El proyecto de conocimiento total es ese mapa. La teoría del todo. La ecuación final. El fundamento último. Cada generación de físicos trabaja en él. Cada generación avanza. Pero el mapa crece y el cartógrafo sigue adentro. Y mientras más crece el mapa, más crece el problema de incluir al cartógrafo.",
-      "Quizás lo que llamamos \"realidad\" no es el territorio. Es el escombro de un mapa que intentó ser total. Fragmentos de ecuaciones. Restos de preguntas. Ruinas de un proyecto imposible.",
-      "No porque fracasamos. Porque la estructura del proyecto contiene su propia imposibilidad.",
-      "El mapa perfecto se autodestruye. No al final del proceso. Desde el principio. La autodestrucción no es accidente. Es forma.",
+      "Volvemos a Borges. El mapa que coincide con el territorio se desintegra. Las generaciones siguientes lo abandonan. Solo quedan ruinas en los desiertos.",
+      "El proyecto de conocimiento total es ese mapa. La teoria del todo. La ecuacion maestra. El fundamento ultimo. Cada generacion de cientificos y filosofos trabaja en el. Cada generacion avanza. Las teorias se vuelven mas precisas, mas unificadas, mas elegantes.",
+      "Pero el cartografo sigue adentro. Y mientras mas crece el mapa, mas crece el problema de incluir al cartografo. El mapa del siglo XXI es vastamente mas detallado que el del siglo XIX. Pero la paradoja de la autorreferencia no se ha resuelto. Se ha vuelto mas clara.",
+      "Quizas lo que llamamos \"realidad\" no es el territorio. Es el escombro de un mapa que intento ser total. Fragmentos de ecuaciones. Restos de teorias. Ruinas de un proyecto imposible que cada generacion hereda y continua, sabiendo o sin saber que la completitud no esta al final del camino.",
+      "No porque fracasemos. Porque la estructura del proyecto contiene su propia imposibilidad. El mapa perfecto se autodestruye. No al final del proceso. Desde el principio. La autodestruccion es la forma.",
     ],
   },
   {
@@ -134,15 +162,15 @@ const SECTIONS: EssaySection[] = [
     title: "VIII. Borde sin clausura",
     paragraphs: [
       "No estamos fuera del misterio. Somos su borde.",
-      "Pero el borde no puede cerrarse. No por ignorancia. Por geometría.",
-      "El sistema que pregunta por su propio fundamento no puede recibir respuesta completa. La pregunta genera más sistema. La respuesta requeriría un punto de vista que no existe. El ojo que quiere verse necesita espejo. Pero el espejo está dentro del ojo.",
-      "Wheeler, Gödel, Borges. Físico, lógico, escritor. Distintos lenguajes, misma intuición: el cierre total es ilusión gramatical. La forma de la pregunta impide la forma de la respuesta.",
-      "Y sin embargo preguntamos. Eso es lo más extraño. El sistema que no puede cerrarse insiste en intentar. La configuración de campos que no puede clausurarse genera, una y otra vez, el gesto de buscar clausura.",
-      "Quizás ese gesto es el punto. No la respuesta. El gesto.",
-      "El universo no tiene fundamento. Tiene bucle. Y el bucle, al girar, genera la ilusión de que hay algo que buscar. La búsqueda es el síntoma. El fundamento es el nombre que le damos al vértigo de no encontrar fondo.",
-      "No hay nada detrás.",
+      "Pero el borde no puede cerrarse. No por ignorancia. Por geometria.",
+      "El sistema que pregunta por su propio fundamento no puede recibir respuesta completa. La pregunta genera mas sistema. La respuesta requeriria un punto de vista que no existe. El ojo que quiere verse necesita espejo. Pero el espejo esta dentro del ojo.",
+      "Wheeler, Godel, Borges, Hofstadter. Fisico, logico, escritor, cientifico cognitivo. Distintos lenguajes, misma intuicion: el cierre total es ilusion gramatical. La forma de la pregunta impide la forma de la respuesta.",
+      "Y sin embargo preguntamos. El sistema que no puede cerrarse insiste en intentar. La configuracion de campos que no puede clausurarse genera, una y otra vez, el gesto de buscar clausura.",
+      "Quizas ese gesto es el punto. No la respuesta. El gesto.",
+      "El universo no tiene fundamento que podamos alcanzar desde dentro. Tiene bucle. Y el bucle, al girar, genera la ilusion de que hay algo que encontrar. La busqueda es el sintoma. El fundamento es el nombre que le damos al vertigo de no encontrar fondo.",
+      "No hay nada detras.",
       "Solo la forma del buscar.",
-      "Solo el mapa desintegrándose.",
+      "Solo el mapa desintegrandose.",
       "Solo el ojo, adentro del ojo, intentando verse.",
     ],
   },
@@ -167,7 +195,7 @@ const FLOATING_FRAGMENTS: FloatingFragment[] = [
 const HIDDEN_PHRASES: PhraseConfig[] = [
   {
     id: "iv-phrase-1",
-    text: "El sistema que intenta capturarse a sí mismo genera enunciados que lo exceden",
+    text: "el sistema que intenta capturarse a si mismo encuentra que la captura genera mas sistema",
   },
   {
     id: "iv-phrase-2",
@@ -176,6 +204,44 @@ const HIDDEN_PHRASES: PhraseConfig[] = [
   {
     id: "iv-phrase-3",
     text: "La clausura no falla. Regresa.",
+  },
+];
+
+const COSMIC_IMAGES: CosmicImage[] = [
+  {
+    id: "space-earth",
+    section: "iii",
+    src: "/images/autorreferencia/space-earth-category.jpg",
+    alt: "Vista real de la Tierra desde orbita",
+    caption: "tierra desde orbita",
+  },
+  {
+    id: "space-caribbean",
+    section: "iii",
+    src: "/images/autorreferencia/space-caribbean.jpg",
+    alt: "Vista real del Caribe desde la estacion espacial",
+    caption: "caribe desde la ISS",
+  },
+  {
+    id: "space-aurora",
+    section: "vii",
+    src: "/images/autorreferencia/space-aurora.jpg",
+    alt: "Aurora real sobre Norteamerica desde orbita",
+    caption: "aurora orbital",
+  },
+  {
+    id: "space-antarctica",
+    section: "vii",
+    src: "/images/autorreferencia/space-antarctica.jpg",
+    alt: "Antartida real vista desde orbita",
+    caption: "antartida",
+  },
+  {
+    id: "space-africa-night",
+    section: "viii",
+    src: "/images/autorreferencia/space-africa-night.jpg",
+    alt: "Africa nocturna real vista desde orbita",
+    caption: "africa nocturna",
   },
 ];
 
@@ -323,6 +389,15 @@ export default function AutorreferenciaPage() {
         },
         {}
       ),
+    []
+  );
+  const cosmicBySection = useMemo(
+    () =>
+      COSMIC_IMAGES.reduce<Partial<Record<SectionId, CosmicImage[]>>>((acc, item) => {
+        const current = acc[item.section] ?? [];
+        acc[item.section] = [...current, item];
+        return acc;
+      }, {}),
     []
   );
 
@@ -598,24 +673,29 @@ export default function AutorreferenciaPage() {
 
   const renderHiddenPhrases = useCallback(
     (text: string, paragraphIndex: number) => {
-      const phraseMap: Record<number, PhraseConfig> = {
-        0: HIDDEN_PHRASES[0],
-        3: HIDDEN_PHRASES[1],
-        5: HIDDEN_PHRASES[2],
-      };
-      const phrase = phraseMap[paragraphIndex];
+      const phrase = HIDDEN_PHRASES.find((candidate) => {
+        const lower = text.toLowerCase();
+        const target = candidate.text.toLowerCase();
+        if (lower.includes(target)) return true;
+        return candidate.text === "Siempre queda resto" && lower.includes("siempre queda resto.");
+      });
       if (!phrase) return renderTokens("iv", text, paragraphIndex);
 
       const phraseText = phrase.text;
       const alternative = phraseText === "Siempre queda resto" ? "Siempre queda resto." : phraseText;
-      const resolved = text.includes(phraseText) ? phraseText : alternative;
-      const split = text.indexOf(resolved);
+      const resolved = text.toLowerCase().includes(phraseText.toLowerCase())
+        ? text.slice(
+            text.toLowerCase().indexOf(phraseText.toLowerCase()),
+            text.toLowerCase().indexOf(phraseText.toLowerCase()) + phraseText.length
+          )
+        : alternative;
+      const split = text.toLowerCase().indexOf(resolved.toLowerCase());
       if (split < 0) return renderTokens("iv", text, paragraphIndex);
 
       const before = text.slice(0, split);
       const after = text.slice(split + resolved.length);
       const phraseWriteProgress = writeProgressForSection("iv");
-      const phraseRevealIndex = (paragraphIndex + 1) / 6;
+      const phraseRevealIndex = (paragraphIndex + 1) / Math.max(1, SECTIONS[3].paragraphs.length);
       const isWritten = phraseWriteProgress >= phraseRevealIndex;
       return (
         <>
@@ -840,6 +920,7 @@ export default function AutorreferenciaPage() {
         <article className={styles.content}>
           {SECTIONS.map((section) => {
             const thinker = thinkerBySection[section.id];
+            const sectionCosmic = cosmicBySection[section.id] ?? [];
             return (
               <section
                 key={section.id}
@@ -884,23 +965,28 @@ export default function AutorreferenciaPage() {
                     );
                   })}
                 </div>
+
+                {sectionCosmic.length > 0 && (
+                  <div className={styles.cosmicGallery}>
+                    {sectionCosmic.map((image) => (
+                      <figure key={image.id} className={styles.cosmicCard}>
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          className={styles.cosmicImage}
+                          width={1200}
+                          height={800}
+                          loading="lazy"
+                          sizes="(max-width: 768px) 100vw, 48vw"
+                        />
+                        <figcaption className={styles.cosmicCaption}>{image.caption}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                )}
               </section>
             );
           })}
-
-          <figure className={styles.cosmicCard}>
-            <Image
-              src="/images/autorreferencia/galaxy.svg"
-              alt="Galaxia monocromatica en expansion"
-              className={styles.cosmicImage}
-              width={1600}
-              height={900}
-              loading="lazy"
-            />
-            <figcaption className={styles.cosmicCaption}>
-              onda, atomo, relatividad
-            </figcaption>
-          </figure>
 
           <div className={styles.aftermath} />
 
