@@ -33,6 +33,11 @@ const mapEntries = [
     title: "Autorreferencia",
     tags: ["fisica", "matematicas"],
   },
+  {
+    slug: "ensayos/isomorfismo",
+    title: "Isomorfismo",
+    tags: ["fisica-cuantica", "budismo", "estructura", "godel"],
+  },
 ];
 
 export default function NodeMap() {

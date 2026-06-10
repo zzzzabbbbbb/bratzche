@@ -8,6 +8,15 @@ export const metadata = {
 
 const experimentalEntries = [
   {
+    slug: "isomorfismo-experimental",
+    href: "/ensayos/isomorfismo",
+    title: "Isomorfismo",
+    date: "2026-06-09",
+    tags: ["fisica-cuantica", "budismo", "estructura", "godel"],
+    excerpt:
+      "Cinco excavaciones independientes golpean el mismo lecho de roca: no hay sustancia, hay estructura.",
+  },
+  {
     slug: "autorreferencia-experimental",
     href: "/ensayos/autorreferencia",
     title: "Autorreferencia",

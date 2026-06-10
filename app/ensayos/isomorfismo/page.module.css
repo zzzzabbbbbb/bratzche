@@ -1,0 +1,1456 @@
+.page {
+  --deco-opacity: 0.16;
+  --deco-speed: 1;
+  position: relative;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  padding: 8rem 1.25rem 4rem;
+  overflow-x: clip;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: min(680px, 100%);
+  margin: 0 auto;
+}
+
+.introHeader {
+  margin-bottom: clamp(3rem, 6vh, 4.5rem);
+}
+
+.introDate {
+  margin: 0 0 1rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.introTitle {
+  width: 100%;
+  margin: 0 0 1.8rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Inter", sans-serif;
+  font-size: clamp(2.4rem, 10.2vw, 8rem);
+  font-weight: 900;
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  color: #fff;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.introTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.introTag {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 0.34rem 0.56rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.proem {
+  margin-bottom: clamp(4.2rem, 9vh, 6.5rem);
+  border-left: 1px solid rgba(0, 255, 0, 0.28);
+  padding-left: clamp(0.9rem, 2.4vw, 1.4rem);
+}
+
+.proemLead {
+  margin: 0 0 1.2rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Inter", sans-serif;
+  font-size: clamp(1.4rem, 3.4vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+  animation: proemBreathe 7s ease-in-out infinite;
+}
+
+.proemLine {
+  margin: 0 0 1.2rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Inter", sans-serif;
+  font-size: clamp(1.05rem, 2.3vw, 1.2rem);
+  line-height: 1.72;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.proemQuestion {
+  margin: 1.8rem 0 0;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: clamp(0.86rem, 1.9vw, 1rem);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: #00ff00;
+  text-shadow: 0 0 12px rgba(0, 255, 0, 0.3);
+  animation: questionPulse 5.2s ease-in-out infinite;
+}
+
+.section {
+  margin-bottom: clamp(5rem, 10vh, 7.5rem);
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  margin: 0 0 2.4rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Inter", sans-serif;
+  font-size: clamp(2rem, 8.6vw, 6rem);
+  font-weight: 900;
+  line-height: 0.86;
+  letter-spacing: -0.012em;
+  color: #fff;
+  text-wrap: balance;
+  overflow: visible;
+  text-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.85rem;
+  width: clamp(120px, 28vw, 280px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.headerGlyph {
+  display: inline-block;
+  transition: opacity 0.12s linear, filter 0.16s ease, transform 0.16s ease;
+}
+
+.headerWord {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.headerGlyphWritten {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  transition: opacity 0.08s linear, filter 0.1s ease, transform 0.1s ease;
+}
+
+.headerGlyphPending {
+  opacity: 0;
+  filter: blur(2px);
+  transform: translateY(0.16em) scale(0.99);
+}
+
+.headerSpace {
+  white-space: pre;
+}
+
+/* I — el campo: las letras ondulan como una excitación que recorre el medio */
+.headerField {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.02em;
+}
+
+.letterField {
+  display: inline-block;
+  animation: fieldWave 4.8s ease-in-out infinite;
+  animation-delay: calc(var(--index) * -0.16s);
+}
+
+/* II — con dos puntos siempre puedes trazar una línea: el título queda tachado */
+.headerStrike {
+  overflow: visible;
+}
+
+.strikeInner {
+  position: relative;
+  display: inline-block;
+}
+
+.strikeLine {
+  position: absolute;
+  left: -0.5%;
+  right: -0.5%;
+  top: 52%;
+  height: 2px;
+  background: rgba(0, 255, 0, 0.75);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: strikeDraw 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.strikePoint {
+  position: absolute;
+  top: 52%;
+  width: 0.34rem;
+  height: 0.34rem;
+  margin-top: -0.13rem;
+  border-radius: 50%;
+  background: #00ff00;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.7);
+  pointer-events: none;
+}
+
+.strikePointA {
+  left: -0.8%;
+  animation: strikePointBlink 7s ease-in-out infinite;
+}
+
+.strikePointB {
+  right: -0.8%;
+  animation: strikePointBlink 7s ease-in-out infinite;
+  animation-delay: 2.4s;
+}
+
+/* III — caja dentro de caja: contorno y ecos anidados del propio título */
+.headerNest {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.92);
+  margin-bottom: 4.6rem;
+}
+
+.nestEcho {
+  position: absolute;
+  left: 0.4rem;
+  top: 100%;
+  font-size: 0.42em;
+  line-height: 0.9;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  animation: nestPulse 6.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.nestEchoDeep {
+  left: 0.8rem;
+  top: calc(100% + 0.52em);
+  font-size: 0.2em;
+  -webkit-text-stroke: 0.6px rgba(0, 255, 0, 0.65);
+  animation-delay: -3.2s;
+}
+
+/* IV — la serie armónica: cada letra vibra a f, 2f o 3f */
+.headerHarmonic {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.02em;
+}
+
+.letterHarmonic {
+  display: inline-block;
+  animation: harmonicBob calc(3.6s / var(--harmonic)) ease-in-out infinite;
+  animation-delay: calc(var(--index) * -0.07s);
+}
+
+/* V — narración sin narrador: el centro del título se ausenta cíclicamente */
+.headerVoidCenter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.02em;
+}
+
+.letterVoid {
+  display: inline-block;
+  animation: voidFade 6.4s ease-in-out infinite;
+  animation-delay: calc(var(--index) * -0.05s);
+}
+
+/* VI — el lecho de roca: las cinco excavaciones convergen, el título se asienta */
+.headerBedrock {
+  display: inline-block;
+  animation: bedrockConverge 7.4s ease-in-out infinite;
+  text-shadow: 0 14px 40px rgba(255, 255, 255, 0.14);
+}
+
+/* VII — la misma cámara descompuesta: doble exposición que intenta separarse */
+.headerDouble {
+  margin-bottom: 3rem;
+}
+
+.headerDouble::after {
+  content: attr(data-title);
+  position: absolute;
+  inset: 0;
+  color: rgba(0, 255, 0, 0.28);
+  filter: blur(0.6px);
+  animation: doubleExposure 5.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* VIII — el campo se dobla: el numeral se pliega sobre su base */
+.headerFoldTitle {
+  overflow: visible;
+}
+
+.foldPivot {
+  display: inline-block;
+  transform-origin: center bottom;
+  animation: titleFold 8s ease-in-out infinite;
+}
+
+.paragraphs p {
+  margin: 0 0 1.35rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Inter", sans-serif;
+  font-size: clamp(1.125rem, 2.4vw, 1.25rem);
+  line-height: 1.78;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.97);
+}
+
+.foldLine {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.word {
+  display: inline-block;
+}
+
+.wordSpace {
+  white-space: pre;
+}
+
+.wordWritten {
+  opacity: 1;
+  filter: blur(0);
+  transition: opacity 0.08s linear, filter 0.1s linear;
+}
+
+.wordPending {
+  opacity: 0;
+  filter: blur(1px);
+}
+
+.wordCorrupted {
+  color: #eaffea;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.25), 0 0 16px rgba(255, 0, 0, 0.18);
+}
+
+/* doble exposición: la palabra revela su fantasma desplazado */
+.wordDoubled {
+  position: relative;
+}
+
+.wordDoubled::after {
+  content: attr(data-word);
+  position: absolute;
+  left: 0.18em;
+  top: 0.07em;
+  color: rgba(0, 255, 0, 0.34);
+  filter: blur(0.5px);
+  pointer-events: none;
+  animation: ghostShift 3.4s ease-in-out infinite;
+}
+
+.wordFractal {
+  position: relative;
+  cursor: pointer;
+}
+
+.wordFractal::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.24rem;
+  width: 0.2rem;
+  height: 0.2rem;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: #00ff00;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+  animation: fractalDotPulse 1.8s ease-in-out infinite;
+}
+
+.hiddenPhrase {
+  opacity: 0.26;
+  color: rgba(255, 255, 255, 0.28);
+  transition: opacity 0.35s ease, color 0.35s ease;
+}
+
+.hiddenPhraseVisible {
+  opacity: 1;
+  color: #fff;
+}
+
+.floatingLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floatingItem {
+  position: fixed;
+  top: 100vh;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: clamp(0.66rem, 1vw, 0.78rem);
+  color: rgba(255, 255, 255, var(--deco-opacity));
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--duration);
+  animation-delay: var(--delay);
+}
+
+.floatingLeft {
+  text-align: left;
+}
+
+.floatingRight {
+  text-align: right;
+}
+
+.fractalOverlay {
+  position: fixed;
+  z-index: 10;
+  transform: translate(-50%, 0);
+  width: min(360px, 82vw);
+  max-height: 60vh;
+  overflow: auto;
+  border: 1px solid rgba(0, 255, 0, 0.45);
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 28px rgba(0, 255, 0, 0.2);
+  padding: 0.75rem;
+}
+
+.fractalWord {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #00ff00;
+  margin-bottom: 0.5rem;
+}
+
+.fractalLayer {
+  border: 1px solid rgba(0, 255, 0, 0.25);
+  margin-top: 0.4rem;
+  padding: 0.45rem;
+}
+
+.fractalTitle {
+  margin: 0 0 0.35rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.56rem;
+  color: #00ff00;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.fractalText {
+  margin: 0;
+  font-size: 0.3rem;
+  line-height: 1.32;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* el último párrafo se pliega: cada palabra rota sobre su base y se aleja */
+.wordFolding {
+  transform-origin: center bottom;
+  animation: wordFold 5.8s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.figureGallery {
+  margin-top: 1.3rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.figureCard {
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.figureMedia {
+  position: relative;
+  overflow: hidden;
+  background: #050505;
+}
+
+.figureImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.figureFx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.fieldLine {
+  position: absolute;
+  inset: 22% -24% auto;
+  height: 26%;
+  border-top: 1px solid rgba(0, 255, 0, 0.32);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  transform-origin: center;
+  animation: fieldDrift 11s ease-in-out infinite;
+}
+
+.fieldLineAlt {
+  inset: auto -28% 12%;
+  opacity: 0.58;
+  animation-delay: -3.8s;
+}
+
+.nestBox {
+  position: absolute;
+  inset: 12%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  animation: nestBreath 7.2s ease-in-out infinite;
+}
+
+.nestBoxInner {
+  inset: 26%;
+  animation-delay: -2.4s;
+}
+
+.nestBoxCore {
+  inset: 40%;
+  border-color: rgba(0, 255, 0, 0.4);
+  animation-delay: -4.8s;
+}
+
+.harmonicBar {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: calc(24% * var(--harmonic));
+  height: 1px;
+  background: rgba(0, 255, 0, 0.3);
+  animation: harmonicGlow calc(4.4s / var(--harmonic)) ease-in-out infinite;
+}
+
+.orbitRing {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 52%;
+  height: 52%;
+  margin-left: -26%;
+  margin-top: -26%;
+  border: 1px dashed rgba(0, 255, 0, 0.35);
+  border-radius: 50%;
+  animation: orbitSpin 14s linear infinite;
+}
+
+.orbitRingAlt {
+  width: 72%;
+  height: 72%;
+  margin-left: -36%;
+  margin-top: -36%;
+  border-color: rgba(255, 255, 255, 0.18);
+  animation-duration: 22s;
+  animation-direction: reverse;
+}
+
+.foldGrid {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1) 0,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 26px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px,
+      transparent 26px
+    );
+  transform: skewY(-4deg);
+  animation: foldWarp 10s ease-in-out infinite;
+}
+
+.foldGridAlt {
+  opacity: 0.42;
+  transform: skewY(4deg);
+  animation-delay: -3.6s;
+}
+
+.figureCaption {
+  padding: 0.65rem 0.9rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.equationStack {
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.equationCard {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0.6rem 0.85rem;
+}
+
+.equationCaption {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.equationWrap {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.equationVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.equationInline :global(.katex) {
+  color: #fff;
+  font-size: 1.3em;
+}
+
+.equationDisplay :global(.katex-display) {
+  margin: 0;
+  padding: 2rem 0;
+}
+
+.equationDisplay :global(.katex) {
+  color: #fff;
+  font-size: 1.6em;
+}
+
+.equationWrap:hover :global(.katex) {
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.28);
+}
+
+.visualSection {
+  position: relative;
+  margin: 3rem 0 6rem;
+  min-height: 1700px;
+  background: #000;
+  contain: layout paint;
+  overflow: clip;
+}
+
+.visualEquationLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.visualEquationOne,
+.visualEquationTwo,
+.visualEquationThree {
+  position: absolute;
+  opacity: 0.18;
+}
+
+.visualEquationOne {
+  top: 6%;
+  right: 8%;
+  transform: rotate(-7deg);
+}
+
+.visualEquationTwo {
+  top: 47%;
+  left: 2%;
+  transform: rotate(6deg);
+}
+
+.visualEquationThree {
+  right: 6%;
+  bottom: 8%;
+  transform: rotate(-3deg);
+}
+
+.visualEquationLayer :global(.katex) {
+  color: rgba(255, 255, 255, 0.18);
+}
+
+.visualNoise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.noiseFragment {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  opacity: var(--opacity);
+  transform: rotate(var(--rot));
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.visualScaffold {
+  position: relative;
+  z-index: 4;
+  min-height: 1700px;
+  max-width: 100%;
+  padding-inline: 0.25rem;
+  color: #fff;
+  overflow: hidden;
+}
+
+.visualScaffold > * {
+  opacity: 0;
+  filter: blur(8px);
+}
+
+.visualSectionVisible .visualEquationLayer,
+.visualSectionVisible .visualNoise {
+  opacity: 1;
+}
+
+.visualSectionVisible .visualScaffold > * {
+  animation: visualReveal 0.75s ease forwards;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(1) {
+  animation-delay: 0.04s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(4) {
+  animation-delay: 0.22s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(5) {
+  animation-delay: 0.3s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(6) {
+  animation-delay: 0.38s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(7) {
+  animation-delay: 0.46s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(8) {
+  animation-delay: 0.54s;
+}
+
+.visualSectionVisible .visualScaffold > *:nth-child(9) {
+  animation-delay: 0.62s;
+}
+
+.visualHeader {
+  position: absolute;
+  top: 29%;
+  left: 3%;
+  width: 86%;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  transform: rotate(-1deg);
+}
+
+.visualTitle {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(3.2rem, 10.5vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.85;
+  color: #fff;
+}
+
+.visualSubtitle {
+  margin: 0;
+  max-width: 250px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #00ff7a;
+  text-align: right;
+}
+
+.dropCapsBlock {
+  position: absolute;
+  top: 3.5%;
+  left: 2%;
+  width: min(860px, 88%);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.dropCapLine {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  line-height: 1.06;
+  font-size: clamp(1.25rem, 2.8vw, 2.25rem);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.94);
+  overflow-wrap: anywhere;
+}
+
+.dropCap {
+  float: left;
+  margin: -0.25rem 0.35rem 0 0;
+  font-family: "Iowan Old Style", "Times New Roman", Times, serif;
+  font-size: clamp(3.8rem, 7vw, 6rem);
+  line-height: 0.82;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 255, 122, 0.28);
+}
+
+.visualParagraph {
+  position: absolute;
+  top: 39%;
+  left: 12%;
+  width: min(860px, 80%);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  line-height: 1.1;
+  font-size: clamp(1.1rem, 2.2vw, 1.7rem);
+  font-weight: 900;
+  color: #fff;
+  transform: rotate(1deg);
+  overflow-wrap: anywhere;
+}
+
+.structureCard {
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  width: min(640px, 58%);
+  border: 1px solid rgba(0, 255, 0, 0.42);
+  background: rgba(10, 10, 10, 0.7);
+  padding: 0.4rem 0.55rem 0.7rem;
+  transform: rotate(-2deg);
+}
+
+.structureLabel {
+  margin: 0;
+  padding: 0 0 0.35rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.visualBullets {
+  margin: 0;
+  padding: 0.4rem 0 0 1.2rem;
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(0.9rem, 1.25vw, 1.12rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.visualBullets li + li {
+  margin-top: 0.3rem;
+}
+
+.benacerrafFloat {
+  position: absolute;
+  top: 58%;
+  right: 1.5%;
+  width: min(560px, 48%);
+  transform: rotate(2deg);
+  z-index: 6;
+}
+
+.benacerrafLead {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(1.2rem, 2.1vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+
+.benacerrafBig {
+  display: inline-block;
+  font-size: clamp(5rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 0.9;
+  color: #fff;
+}
+
+.benacerrafLine {
+  margin: 0.45rem 0 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+
+.logicSymbol {
+  color: #00ff7a;
+  text-shadow: 0 0 8px rgba(0, 255, 122, 0.4);
+}
+
+.isomorphFloat {
+  position: absolute;
+  left: 2%;
+  top: 67%;
+  width: min(620px, 56%);
+  margin: 0;
+  z-index: 3;
+}
+
+.isomorphImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.92;
+}
+
+.diagramCaptionNeon {
+  display: inline-block;
+  margin-top: 0.45rem;
+  color: #00a83f;
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.visualQuote {
+  position: absolute;
+  left: 1%;
+  top: 82%;
+  width: min(940px, 86%);
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(4.5rem, 10.5vw, 8rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  color: #00b843;
+  text-shadow: 0 0 14px rgba(0, 255, 0, 0.22);
+  z-index: 7;
+  pointer-events: none;
+}
+
+.arrowDoodle {
+  position: absolute;
+  left: 8%;
+  top: 93%;
+  width: min(650px, 58%);
+  height: auto;
+  stroke: #0d8c36;
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 7 7;
+  z-index: 8;
+}
+
+.codeFloat {
+  margin: 0;
+  position: absolute;
+  width: min(460px, 38%);
+  padding: 0.7rem 0.8rem;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 0.64rem;
+  line-height: 1.5;
+  color: #00ff7a;
+  border: 1px dashed rgba(0, 255, 122, 0.45);
+  background: rgba(17, 17, 17, 0.92);
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+  z-index: 9;
+}
+
+.codeFloatA {
+  left: 2%;
+  bottom: 1.4%;
+  transform: rotate(-3deg);
+}
+
+.codeFloatB {
+  right: 3%;
+  bottom: 3.5%;
+  transform: rotate(2deg);
+}
+
+.structureCard :global(.katex) {
+  color: #fff;
+  font-size: 1.14em;
+}
+
+.structureCard :global(.katex-display) {
+  margin: 0;
+  padding: 0.75rem 0 0.4rem;
+}
+
+.aftermath {
+  height: 100vh;
+}
+
+.siteFooter {
+  margin-top: 2.2rem;
+  padding: 1rem 0 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.siteBrand {
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+@keyframes proemBreathe {
+  0%,
+  100% {
+    opacity: 0.92;
+    letter-spacing: -0.01em;
+  }
+  50% {
+    opacity: 1;
+    letter-spacing: 0.004em;
+  }
+}
+
+@keyframes questionPulse {
+  0%,
+  100% {
+    opacity: 0.65;
+    text-shadow: 0 0 6px rgba(0, 255, 0, 0.18);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 16px rgba(0, 255, 0, 0.42);
+  }
+}
+
+@keyframes fieldWave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.08em);
+  }
+}
+
+@keyframes strikeDraw {
+  0%,
+  12% {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  38%,
+  62% {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+  88%,
+  100% {
+    transform: scaleX(0);
+    transform-origin: right center;
+  }
+}
+
+@keyframes strikePointBlink {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
+
+@keyframes nestPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translateX(0.3rem);
+  }
+}
+
+@keyframes harmonicBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.07em);
+  }
+}
+
+@keyframes voidFade {
+  0%,
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  50% {
+    opacity: calc(1 - var(--dip));
+    filter: blur(calc(var(--dip) * 2.4px));
+  }
+}
+
+@keyframes bedrockConverge {
+  0%,
+  100% {
+    letter-spacing: 0.035em;
+    transform: translateY(0);
+  }
+  46% {
+    letter-spacing: -0.018em;
+    transform: translateY(0.04em);
+  }
+  52% {
+    transform: translateY(0.04em) translateX(0.6px);
+  }
+  56% {
+    transform: translateY(0.04em) translateX(-0.6px);
+  }
+  60% {
+    transform: translateY(0.04em);
+  }
+}
+
+@keyframes doubleExposure {
+  0%,
+  100% {
+    transform: translate(2px, 0);
+    opacity: 0.18;
+  }
+  45% {
+    transform: translate(10px, -3px);
+    opacity: 0.36;
+  }
+  55% {
+    transform: translate(9px, -2px);
+    opacity: 0.32;
+  }
+}
+
+@keyframes titleFold {
+  0%,
+  100% {
+    transform: perspective(620px) rotateX(0deg);
+  }
+  42% {
+    transform: perspective(620px) rotateX(56deg);
+  }
+  58% {
+    transform: perspective(620px) rotateX(56deg);
+  }
+}
+
+@keyframes ghostShift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.34;
+  }
+  50% {
+    transform: translate(0.1em, -0.04em);
+    opacity: 0.5;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0px);
+    opacity: calc(var(--deco-opacity) * 0.7);
+  }
+  15% {
+    opacity: calc(var(--deco-opacity) + 0.06);
+  }
+  100% {
+    transform: translateY(calc(-150vh * var(--deco-speed)));
+    opacity: 0;
+  }
+}
+
+@keyframes wordFold {
+  0% {
+    transform: translate(0, 0) rotateX(0deg);
+    opacity: 1;
+  }
+  55% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) rotateX(var(--fold));
+    opacity: 0.2;
+  }
+}
+
+@keyframes fieldDrift {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) scaleX(1);
+  }
+  50% {
+    transform: translateX(3.5%) translateY(-7%) scaleX(1.06);
+  }
+}
+
+@keyframes nestBreath {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.045);
+    opacity: 1;
+  }
+}
+
+@keyframes harmonicGlow {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes orbitSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes foldWarp {
+  0%,
+  100% {
+    transform: skewY(-4deg) translateY(0);
+    opacity: 0.52;
+  }
+  50% {
+    transform: skewY(-9deg) translateY(-2%);
+    opacity: 0.78;
+  }
+}
+
+@keyframes fractalDotPulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.64;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.28);
+    opacity: 1;
+  }
+}
+
+@keyframes visualReveal {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .floatingItem {
+    opacity: calc(var(--deco-opacity) * 0.7);
+  }
+
+  .visualEquationLayer,
+  .visualNoise {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding-top: 7.2rem;
+  }
+
+  .introTitle {
+    width: 100%;
+    margin-left: 0;
+    font-size: clamp(1.75rem, 11.2vw, 3.8rem);
+  }
+
+  .header {
+    letter-spacing: 0.01em;
+    width: 100%;
+    margin-left: 0;
+    font-size: clamp(1.35rem, 8.2vw, 3rem);
+  }
+
+  .floatingItem {
+    display: none;
+  }
+
+  .headerNest {
+    margin-bottom: 3.2rem;
+  }
+
+  .nestEcho {
+    display: none;
+  }
+
+  .headerDouble::after {
+    opacity: 0.18;
+  }
+
+  .visualSection {
+    min-height: auto;
+    margin: 2.1rem 0 4rem;
+  }
+
+  .visualEquationLayer,
+  .visualNoise {
+    display: none;
+  }
+
+  .visualScaffold {
+    min-height: auto;
+    display: grid;
+    gap: 0.9rem;
+    padding-inline: 0.15rem;
+  }
+
+  .dropCapsBlock,
+  .visualHeader,
+  .visualParagraph,
+  .structureCard,
+  .benacerrafFloat,
+  .isomorphFloat,
+  .visualQuote,
+  .arrowDoodle,
+  .codeFloat {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    max-width: none;
+    transform: none;
+    filter: none;
+    opacity: 1;
+    animation: none;
+  }
+
+  .visualTitle {
+    font-size: clamp(2.2rem, 13vw, 3.6rem);
+  }
+
+  .visualSubtitle {
+    font-size: 1.2rem;
+    text-align: left;
+    max-width: none;
+  }
+
+  .dropCapLine {
+    font-size: clamp(1.02rem, 5.2vw, 1.4rem);
+  }
+
+  .visualParagraph {
+    font-size: clamp(0.95rem, 4.7vw, 1.35rem);
+  }
+
+  .structureLabel {
+    font-size: 1.05rem;
+  }
+
+  .visualBullets {
+    font-size: 0.88rem;
+  }
+
+  .benacerrafLead {
+    font-size: 1.05rem;
+  }
+
+  .benacerrafLine {
+    font-size: 0.92rem;
+  }
+
+  .visualQuote {
+    font-size: clamp(2.4rem, 12vw, 3.8rem);
+    line-height: 0.84;
+    width: 96%;
+  }
+
+  .arrowDoodle {
+    width: 86%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .codeFloat {
+    font-size: 0.54rem;
+    white-space: pre-wrap;
+  }
+
+  .dropCap {
+    font-size: 2.6rem;
+  }
+}
