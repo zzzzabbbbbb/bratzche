@@ -36,6 +36,11 @@ export default async function PiecePage({
   const prevPiece = currentIndex > 0 ? pieces[currentIndex - 1] : null;
   const nextPiece =
     currentIndex < pieces.length - 1 ? pieces[currentIndex + 1] : null;
+  // Tras la última pieza regular, la cadena sigue en los ensayos experimentales.
+  const nextExperimental =
+    !nextPiece && currentIndex === pieces.length - 1
+      ? { href: "/ensayos/autorreferencia", title: "autorreferencia" }
+      : null;
 
   return (
     <>
@@ -183,6 +188,18 @@ export default async function PiecePage({
                 </span>
                 <span className="text-lg font-bold text-gris group-hover:text-neon transition-colors duration-300">
                   {nextPiece.title}
+                </span>
+              </Link>
+            ) : nextExperimental ? (
+              <Link
+                href={nextExperimental.href}
+                className="group text-right max-w-[45%]"
+              >
+                <span className="text-[0.55rem] tracking-wide text-gris block mb-2">
+                  siguiente
+                </span>
+                <span className="text-lg font-bold text-gris group-hover:text-neon transition-colors duration-300">
+                  {nextExperimental.title}
                 </span>
               </Link>
             ) : (

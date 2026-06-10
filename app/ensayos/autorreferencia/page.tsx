@@ -890,7 +890,7 @@ export default function AutorreferenciaPage() {
           <h2 className={`${styles.header} ${styles.headerFlicker}`}>
             {glyphs(`${section.id}-flicker`, styles.letterFlicker, (index) => {
               return {
-                "--delay": `${seeded(index + 111) * 1.7}s`,
+                "--delay": `${(seeded(index + 111) * 1.7).toFixed(3)}s`,
               } as CSSProperties;
             })}
           </h2>
@@ -1256,6 +1256,36 @@ export default function AutorreferenciaPage() {
               descargar pdf
             </Link>
           </div>
+
+          <nav
+            className="mt-24 pt-8 border-t border-gris-oscuro flex justify-between items-start"
+            aria-label="Navegación entre piezas"
+          >
+            <Link
+              href="/caos-y-estrella-danzante"
+              className="group text-left max-w-[45%]"
+            >
+              <span className="text-[0.55rem] tracking-wide text-gris block mb-2">
+                anterior
+              </span>
+              <span className="text-lg font-bold text-gris group-hover:text-neon transition-colors duration-300">
+                Hay que tener un caos dentro de si para dar a luz a una estrella
+                danzante
+              </span>
+            </Link>
+
+            <Link
+              href="/ensayos/isomorfismo"
+              className="group text-right max-w-[45%]"
+            >
+              <span className="text-[0.55rem] tracking-wide text-gris block mb-2">
+                siguiente
+              </span>
+              <span className="text-lg font-bold text-gris group-hover:text-neon transition-colors duration-300">
+                isomorfismo
+              </span>
+            </Link>
+          </nav>
 
           <footer className={styles.siteFooter}>
             <span className={styles.siteBrand}>bratzche journal</span>

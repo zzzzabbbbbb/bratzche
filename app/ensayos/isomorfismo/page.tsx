@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import Navigation from "@/components/Navigation";
@@ -30,6 +31,17 @@ type PhraseConfig = {
 };
 
 type FigureMotif = "field" | "nest" | "harmonic" | "orbit" | "fold";
+
+type ExcavationPortrait = {
+  id: string;
+  section: SectionId;
+  name: string;
+  digLabel: string;
+  finding: string;
+  image: string;
+  width: number;
+  height: number;
+};
 
 type ExcavationFigure = {
   id: string;
@@ -175,6 +187,49 @@ const HIDDEN_PHRASES: PhraseConfig[] = [
   {
     id: "v-phrase-3",
     text: "llegaron, por caminos sin contacto, a la misma ausencia",
+  },
+];
+
+const EXCAVATION_PORTRAITS: ExcavationPortrait[] = [
+  {
+    id: "faraday",
+    section: "i",
+    name: "Michael Faraday",
+    digLabel: "excavación 01 · terreno: materia",
+    finding: "hallazgo: el campo, antes del lenguaje",
+    image: "/images/isomorfismo/faraday.jpg",
+    width: 600,
+    height: 827,
+  },
+  {
+    id: "buda",
+    section: "i",
+    name: "Buda",
+    digLabel: "excavación 02 · terreno: experiencia",
+    finding: "hallazgo: anatta, solo hay experiencia",
+    image: "/images/isomorfismo/budaa.jpeg",
+    width: 736,
+    height: 1041,
+  },
+  {
+    id: "varela",
+    section: "v",
+    name: "Francisco Varela",
+    digLabel: "excavación 05 · terreno: mente",
+    finding: "hallazgo: narración sin narrador",
+    image: "/images/isomorfismo/profile_image_francisco_varela.jpg",
+    width: 500,
+    height: 313,
+  },
+  {
+    id: "nagarjuna",
+    section: "vi",
+    name: "Nagarjuna",
+    digLabel: "lecho de roca · sin estrato",
+    finding: "hallazgo: la vacuidad también está vacía",
+    image: "/images/isomorfismo/Nagarjuna_with_84_mahasiddha_cropped.jpg",
+    width: 686,
+    height: 857,
   },
 ];
 
@@ -362,6 +417,18 @@ export default function IsomorfismoPage() {
   } | null>(null);
 
   const suspicionIntensity = sectionProgress.vii;
+  const portraitsBySection = useMemo(
+    () =>
+      EXCAVATION_PORTRAITS.reduce<Partial<Record<SectionId, ExcavationPortrait[]>>>(
+        (acc, portrait) => {
+          const current = acc[portrait.section] ?? [];
+          acc[portrait.section] = [...current, portrait];
+          return acc;
+        },
+        {}
+      ),
+    []
+  );
   const figuresBySection = useMemo(
     () =>
       EXCAVATION_FIGURES.reduce<Partial<Record<SectionId, ExcavationFigure[]>>>(
@@ -896,6 +963,15 @@ export default function IsomorfismoPage() {
     [writeProgressForHeader]
   );
 
+  const digProgressForSection = useCallback(
+    (id: SectionId) => {
+      if (isCompactViewport) return 1;
+      const raw = sectionProgress[id];
+      return Math.max(0, Math.min(1, (raw - 0.02) / 0.3));
+    },
+    [isCompactViewport, sectionProgress]
+  );
+
   const renderFigureFx = useCallback((motif: FigureMotif) => {
     if (motif === "field") {
       return (
@@ -1150,6 +1226,7 @@ export default function IsomorfismoPage() {
           </div>
 
           {SECTIONS.map((section) => {
+            const sectionPortraits = portraitsBySection[section.id] ?? [];
             const sectionFigures = figuresBySection[section.id] ?? [];
             const sectionEquations = equationsBySection[section.id] ?? [];
             return (
@@ -1158,6 +1235,48 @@ export default function IsomorfismoPage() {
                   ref={setSectionRef(section.id)}
                   className={styles.section}
                 >
+                  {sectionPortraits.length > 0 && (
+                    <div
+                      className={`${styles.digGallery} ${
+                        sectionPortraits.length > 1 ? styles.digGalleryDouble : ""
+                      }`}
+                    >
+                      {sectionPortraits.map((portrait) => {
+                        const dig = digProgressForSection(portrait.section);
+                        return (
+                          <figure
+                            key={portrait.id}
+                            className={styles.digCard}
+                            style={{ "--dig": dig } as CSSProperties}
+                          >
+                            <div className={styles.digMedia}>
+                              <Image
+                                src={portrait.image}
+                                alt={`Retrato de ${portrait.name}`}
+                                className={styles.digImage}
+                                width={portrait.width}
+                                height={portrait.height}
+                                loading="lazy"
+                              />
+                              <span aria-hidden className={styles.digSoil} />
+                              <span aria-hidden className={styles.digFrontier} />
+                            </div>
+                            <figcaption className={styles.digCaption}>
+                              <span className={styles.digLabel}>{portrait.digLabel}</span>
+                              <span className={styles.digFinding}>{portrait.finding}</span>
+                              <span className={styles.digMeta}>
+                                <span className={styles.digName}>{portrait.name}</span>
+                                <span className={styles.digDepth}>
+                                  {dig >= 1 ? "expuesto" : `prof. ${Math.round(dig * 100)}%`}
+                                </span>
+                              </span>
+                            </figcaption>
+                          </figure>
+                        );
+                      })}
+                    </div>
+                  )}
+
                   {renderHeader(section)}
 
                   <div className={styles.paragraphs}>
@@ -1230,6 +1349,24 @@ export default function IsomorfismoPage() {
           })}
 
           <div className={styles.aftermath} />
+
+          <nav
+            className="mt-24 pt-8 border-t border-gris-oscuro flex justify-between items-start"
+            aria-label="Navegación entre piezas"
+          >
+            <Link
+              href="/ensayos/autorreferencia"
+              className="group text-left max-w-[45%]"
+            >
+              <span className="text-[0.55rem] tracking-wide text-gris block mb-2">
+                anterior
+              </span>
+              <span className="text-lg font-bold text-gris group-hover:text-neon transition-colors duration-300">
+                autorreferencia
+              </span>
+            </Link>
+            <div />
+          </nav>
 
           <footer className={styles.siteFooter}>
             <span className={styles.siteBrand}>bratzche journal</span>
