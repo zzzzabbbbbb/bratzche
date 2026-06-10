@@ -392,11 +392,13 @@ function FractalEssay({ depth }: { depth: number }) {
 export default function IsomorfismoPage() {
   const sectionRefs = useRef<Partial<Record<SectionId, HTMLElement | null>>>({});
   const phraseRefs = useRef<Record<string, HTMLSpanElement | null>>({});
+  const portraitRefs = useRef<Record<string, HTMLElement | null>>({});
   const holdTimerRef = useRef<number | null>(null);
   const visualSectionRef = useRef<HTMLElement | null>(null);
 
   const [sectionProgress, setSectionProgress] =
     useState<Record<SectionId, number>>(initialProgress);
+  const [portraitDig, setPortraitDig] = useState<Record<string, number>>({});
   const [revealedPhrases, setRevealedPhrases] = useState<string[]>([]);
   const [visualVisible, setVisualVisible] = useState(false);
   const [isCompactViewport, setIsCompactViewport] = useState(false);
@@ -450,6 +452,12 @@ export default function IsomorfismoPage() {
   const setPhraseRef = useCallback((id: string) => {
     return (element: HTMLSpanElement | null) => {
       phraseRefs.current[id] = element;
+    };
+  }, []);
+
+  const setPortraitRef = useCallback((id: string) => {
+    return (element: HTMLElement | null) => {
+      portraitRefs.current[id] = element;
     };
   }, []);
 
@@ -558,6 +566,29 @@ export default function IsomorfismoPage() {
           const changed = (Object.keys(next) as SectionId[]).some(
             (key) => Math.abs(prev[key] - next[key]) > 0.02
           );
+          return changed ? next : prev;
+        });
+
+        // la excavación sigue a la propia imagen: entra por abajo y queda
+        // expuesta cuando su borde superior alcanza el 40% del viewport
+        setPortraitDig((prev) => {
+          const next: Record<string, number> = { ...prev };
+          let changed = false;
+          Object.entries(portraitRefs.current).forEach(([id, node]) => {
+            if (!node) return;
+            const rect = node.getBoundingClientRect();
+            const value = Math.max(
+              0,
+              Math.min(
+                1,
+                (window.innerHeight - rect.top) / (window.innerHeight * 0.6)
+              )
+            );
+            if (Math.abs((prev[id] ?? 0) - value) > 0.02) {
+              next[id] = value;
+              changed = true;
+            }
+          });
           return changed ? next : prev;
         });
 
@@ -953,13 +984,12 @@ export default function IsomorfismoPage() {
     [writeProgressForHeader]
   );
 
-  const digProgressForSection = useCallback(
-    (id: SectionId) => {
+  const digForPortrait = useCallback(
+    (id: string) => {
       if (isCompactViewport) return 1;
-      const raw = sectionProgress[id];
-      return Math.max(0, Math.min(1, (raw - 0.02) / 0.3));
+      return portraitDig[id] ?? 0;
     },
-    [isCompactViewport, sectionProgress]
+    [isCompactViewport, portraitDig]
   );
 
   const renderFigureFx = useCallback((motif: FigureMotif) => {
@@ -1232,10 +1262,11 @@ export default function IsomorfismoPage() {
                       }`}
                     >
                       {sectionPortraits.map((portrait) => {
-                        const dig = digProgressForSection(portrait.section);
+                        const dig = digForPortrait(portrait.id);
                         return (
                           <figure
                             key={portrait.id}
+                            ref={setPortraitRef(portrait.id)}
                             className={styles.digCard}
                             style={{ "--dig": dig } as CSSProperties}
                           >
