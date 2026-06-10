@@ -540,34 +540,8 @@
 }
 
 .digCaption {
-  display: grid;
-  gap: 0.3rem;
   padding: 0.65rem 0.9rem 0.75rem;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.digLabel {
-  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
-  font-size: 0.56rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #00c84f;
-}
-
-.digFinding {
-  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
-  font-size: 0.56rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.digMeta {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.9rem;
-  margin-top: 0.2rem;
 }
 
 .digName {
@@ -575,15 +549,6 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.9);
-}
-
-.digDepth {
-  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
-  font-size: 0.56rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-variant-numeric: tabular-nums;
-  color: rgba(0, 255, 0, 0.75);
 }
 
 .figureGallery {

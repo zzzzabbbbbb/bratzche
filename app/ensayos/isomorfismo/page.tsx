@@ -36,8 +36,6 @@ type ExcavationPortrait = {
   id: string;
   section: SectionId;
   name: string;
-  digLabel: string;
-  finding: string;
   image: string;
   width: number;
   height: number;
@@ -195,8 +193,6 @@ const EXCAVATION_PORTRAITS: ExcavationPortrait[] = [
     id: "faraday",
     section: "i",
     name: "Michael Faraday",
-    digLabel: "excavación 01 · terreno: materia",
-    finding: "hallazgo: el campo, antes del lenguaje",
     image: "/images/isomorfismo/faraday.jpg",
     width: 600,
     height: 827,
@@ -205,8 +201,6 @@ const EXCAVATION_PORTRAITS: ExcavationPortrait[] = [
     id: "buda",
     section: "i",
     name: "Buda",
-    digLabel: "excavación 02 · terreno: experiencia",
-    finding: "hallazgo: anatta, solo hay experiencia",
     image: "/images/isomorfismo/budaa.jpeg",
     width: 736,
     height: 1041,
@@ -215,8 +209,6 @@ const EXCAVATION_PORTRAITS: ExcavationPortrait[] = [
     id: "varela",
     section: "v",
     name: "Francisco Varela",
-    digLabel: "excavación 05 · terreno: mente",
-    finding: "hallazgo: narración sin narrador",
     image: "/images/isomorfismo/profile_image_francisco_varela.jpg",
     width: 500,
     height: 313,
@@ -225,8 +217,6 @@ const EXCAVATION_PORTRAITS: ExcavationPortrait[] = [
     id: "nagarjuna",
     section: "vi",
     name: "Nagarjuna",
-    digLabel: "lecho de roca · sin estrato",
-    finding: "hallazgo: la vacuidad también está vacía",
     image: "/images/isomorfismo/Nagarjuna_with_84_mahasiddha_cropped.jpg",
     width: 686,
     height: 857,
@@ -239,7 +229,7 @@ const EXCAVATION_FIGURES: ExcavationFigure[] = [
     section: "i",
     src: "/images/isomorfismo/fig-campo.svg",
     alt: "El campo y la excitación: una onda local sobre líneas de campo",
-    caption: "primera excavación · el campo",
+    caption: "no hay partículas. hay campos.",
     motif: "field",
   },
   {
@@ -247,7 +237,7 @@ const EXCAVATION_FIGURES: ExcavationFigure[] = [
     section: "iii",
     src: "/images/isomorfismo/fig-numeros.svg",
     alt: "Dos construcciones incompatibles del número tres",
-    caption: "tercera excavación · el número",
+    caption: "el tres no es un objeto. es una posición.",
     motif: "nest",
   },
   {
@@ -255,7 +245,7 @@ const EXCAVATION_FIGURES: ExcavationFigure[] = [
     section: "iv",
     src: "/images/isomorfismo/fig-sonido.svg",
     alt: "Serie armónica: misma forma, otras frecuencias",
-    caption: "cuarta excavación · el sonido",
+    caption: "el timbre es relación.",
     motif: "harmonic",
   },
   {
@@ -263,7 +253,7 @@ const EXCAVATION_FIGURES: ExcavationFigure[] = [
     section: "v",
     src: "/images/isomorfismo/fig-mente.svg",
     alt: "Narración sin narrador: procesos coordinados sin centro",
-    caption: "quinta excavación · la mente",
+    caption: "narración sin narrador.",
     motif: "orbit",
   },
   {
@@ -271,7 +261,7 @@ const EXCAVATION_FIGURES: ExcavationFigure[] = [
     section: "viii",
     src: "/images/isomorfismo/fig-pliegue.svg",
     alt: "El campo se dobla: el que pregunta dentro de lo preguntado",
-    caption: "el pliegue · indecidible desde adentro",
+    caption: "el campo se dobla.",
     motif: "fold",
   },
 ];
@@ -1262,14 +1252,7 @@ export default function IsomorfismoPage() {
                               <span aria-hidden className={styles.digFrontier} />
                             </div>
                             <figcaption className={styles.digCaption}>
-                              <span className={styles.digLabel}>{portrait.digLabel}</span>
-                              <span className={styles.digFinding}>{portrait.finding}</span>
-                              <span className={styles.digMeta}>
-                                <span className={styles.digName}>{portrait.name}</span>
-                                <span className={styles.digDepth}>
-                                  {dig >= 1 ? "expuesto" : `prof. ${Math.round(dig * 100)}%`}
-                                </span>
-                              </span>
+                              <span className={styles.digName}>{portrait.name}</span>
                             </figcaption>
                           </figure>
                         );
