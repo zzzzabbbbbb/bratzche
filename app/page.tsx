@@ -1,5 +1,5 @@
-import Threshold from "@/components/Threshold";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <Threshold />;
+  redirect("/archivo");
 }

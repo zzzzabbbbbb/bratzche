@@ -13,8 +13,7 @@ const experimentalEntries = [
     title: "Isomorfismo",
     date: "2026-06-09",
     tags: ["fisica-cuantica", "budismo", "estructura", "godel"],
-    excerpt:
-      "Cinco excavaciones independientes golpean el mismo lecho de roca: no hay sustancia, hay estructura.",
+    excerpt: "Cinco formas. Una misma estructura.",
   },
   {
     slug: "autorreferencia-experimental",
@@ -22,8 +21,7 @@ const experimentalEntries = [
     title: "Autorreferencia",
     date: "2026-02-27",
     tags: ["fisica", "matematicas"],
-    excerpt:
-      "Ensayo vivo: observador, mapa, recursion y ruina en una interfaz que se altera al leerla.",
+    excerpt: "La interfaz se observa a sí misma.",
   },
 ] as const;
 
