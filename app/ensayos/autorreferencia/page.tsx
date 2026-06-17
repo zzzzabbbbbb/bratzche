@@ -1269,7 +1269,7 @@ export default function AutorreferenciaPage() {
                 anterior
               </span>
               <span className="text-lg font-bold text-gris group-hover:text-neon transition-colors duration-300">
-                Hay que tener un caos dentro de si para dar a luz a una estrella
+                Hay que tener un caos dentro de sí para dar a luz a una estrella
                 danzante
               </span>
             </Link>
