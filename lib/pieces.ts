@@ -191,54 +191,43 @@ eso también sea ser.`,
   },
   {
     slug: "caos-y-estrella-danzante",
-    title: "Hay que tener un caos dentro de si para dar a luz a una estrella danzante",
+    title: "Hay que tener un caos dentro de sí para dar a luz a una estrella danzante",
     date: "2026-02-26",
-    tags: ["filosofia", "nietzsche", "caos", "transformacion", "existencia"],
+    tags: ["nietzsche", "caos", "transformacion"],
     excerpt:
       "El caos no era el enemigo: era el suelo fértil para volver a nacer.",
     epigraphs: [
-      "\"Hay que tener un caos dentro de si para dar a luz a una estrella danzante.\" — Nietzsche",
-      "No es punto final: es registro de una salida.",
-      "Lo que llega después del fondo solo uno sabe cuánto vale.",
-      "La gratitud también es una forma de estructura.",
+      "\"Hay que tener un caos dentro de sí para dar a luz a una estrella danzante.\" — Nietzsche",
     ],
-    content: `Hay que tener un caos dentro de sí para dar a luz a una estrella danzante.
+    content: `Esto es una nota rápida, y no porque no lo sienta hondo sino porque lo necesitaba decir hoy, ahora, antes de que se me pase. A veces uno carga algo adentro y sabe que si no lo escribe se le enreda y se pierde, así que lo saco aunque salga mal.
 
-Esto es una nota rápida. No tanto porque no lo sienta profundo, sino porque lo necesitaba decir ahora. Porque a veces uno carga algo adentro y sabe que si no lo escribe, si no lo saca, se le enreda por dentro y se pierde la claridad.
+No sé bien por dónde empezar la verdad, porque hay cosas que no se dejan ordenar en palabras fáciles. Lo que estoy viviendo ahorita es raro, raro en el mejor sentido, como esos momentos en que te das cuenta de que algo cambió y ni siquiera viste cuándo se sembró la semilla, ya estaba ahí y no lo notaste.
 
-No sé bien por dónde empezar. Tal vez porque hay cosas que aunque uno quiera no se ordenan en palabras fáciles. Lo que estoy viviendo ahora es extraño en el mejor sentido: extraño como esos momentos en los que te das cuenta de que algo cambió y ni siquiera viste cuándo se sembró la semilla.
+Hace muy poco yo estaba en un lugar oscuro, un lugar que parecía no tener puertas, me despertaba sintiendo que el tiempo era una carga, que existir era nada más un ciclo de ansiedad y cansancio, me había perdido y lo peor no era estar perdido, era que ya ni buscaba el camino de vuelta porque había olvidado cómo se hacía.
 
-Hace muy poco yo estaba en un lugar oscuro. Un lugar que parecía no tener puertas. Me despertaba sintiendo que el tiempo era una carga, que la existencia era un ciclo de ansiedad y cansancio. Me había perdido, y ni siquiera buscaba el camino de vuelta porque había olvidado cómo se hacía.
+Recuerdo una noche, de las más silenciosas, cuando volví de la playa, el lugar que según todos debía calmarme y no me calmó nada, al revés. Me sentía roto, invisible, el cuerpo me temblaba porque ya no tenía en las venas eso que por un tiempo creí que me sostenía.
 
-Recuerdo una noche, una de las más silenciosas, cuando regresé de la playa. Un lugar que según todos debía calmarme. Pero no fue así. Me sentía roto. Invisible. El cuerpo temblaba porque ya no tenía en las venas eso que por un tiempo creí que me sostenía.
+Y fue ahí, solo en mi cuarto, que rogué, no sé a quién, no sé si a Dios o a algo o al eco de mi propia voz, rogué que me dejaran salir, que me dieran una oportunidad, y no pedía riqueza ni fama ni éxito ni nada de eso, pedía aire, pedía un día sin hundirme, uno solo.
 
-Y fue entonces, solo en mi cuarto, que rogué. No sé a quién. No sé si a Dios, si a algo, si al eco de mi propia voz. Rogué que por favor me dejaran salir. Que me dejaran una oportunidad. No pedía riqueza ni fama ni éxito. Pedía aire. Pedía un día sin hundirme.
+Y de algún modo esa súplica no cayó en el vacío, porque unas semanas después el mundo que yo creía cerrado se abrió, sin fanfarria, sin promesas, se abrió de a poco, como se abre un respiro.
 
-Y de algún modo esa súplica no fue en vano. Unas semanas después, el mundo que yo creía cerrado se abrió. No con fanfarria. No con promesas. Se abrió de a poco, como un respiro, como el primer rayo que entra en una habitación cerrada.
+Ahora respiro distinto, miro distinto, me despierto y hay un orden nuevo en las cosas, no porque el mundo haya cambiado sino porque algo en mí se reacomodó, y trabajo con personas que admiro, gente que brilla por lo que es, y cada día me enseñan algo sin proponérselo.
 
-Ahora respiro distinto. Miro distinto. Me despierto y hay un orden nuevo en las cosas. No porque el mundo haya cambiado, sino porque algo en mí se reacomodó. Trabajo con personas que admiro profundamente, gente que brilla por lo que es, y cada día me enseñan algo sin proponérselo.
+Pero lo más raro es estar arriba después de haber vivido tanto tiempo en el fondo, porque el vértigo no se fue del todo, uno se acostumbra a la lucha, al peso, y cuando el peso se va resulta que la ligereza también asusta, nadie te avisa eso, que volver a estar bien da un poco de miedo.
 
-Pero lo más raro es estar arriba después de haber vivido tanto tiempo en el fondo. Es como si el vértigo no se hubiera ido del todo. Uno se acostumbra a la lucha, al peso. Y cuando el peso se va, la ligereza también asusta.
+Y lo digo desde la humildad, no hay un solo día en que no me sorprenda de lo que estoy viviendo, de lo que estoy construyendo, de lo que estoy siendo, no era el plan, no era nada de lo que imaginé, y sin embargo aquí está, pasando.
 
-Lo digo desde la humildad: no hay un solo día en que no me sorprenda de lo que estoy viviendo. De lo que estoy construyendo. De lo que estoy siendo. No era el plan. No era lo que imaginé. Y sin embargo, aquí está.
+Lo que más me conmueve no son los logros, es haberme demostrado que podía resistir, que podía volver a creer, que podía empezar a cuidarme, así de simple y así de difícil.
 
-Lo que más me conmueve no son los logros. Es haberme demostrado que podía resistir. Que podía volver a creer. Que podía empezar a cuidar de mí, como quien cuida una planta que creía marchita.
+Aquí estoy, con cero respuestas, sin certezas de nada, pero con gratitud y con ganas de seguir, y con la conciencia de que este momento es frágil y es hermoso y que las dos cosas van juntas, siempre van juntas.
 
-Aquí estoy, con cero respuestas. No con certezas. Pero con gratitud. Y con ganas de seguir. Y con la conciencia de que este momento es frágil y hermoso.
+Hoy entiendo esa frase como no la entendía antes, hay que tener un caos dentro de sí para dar a luz a una estrella danzante, y el caos no era el enemigo, el caos fue el suelo, fue lo que me obligó a buscar, a moverme, a intentar, y no lo agradezco, no se agradece un fondo así, pero sin él no habría tenido de dónde empujar.
 
-Hoy más que nunca entiendo esa frase: hay que tener un caos dentro de sí para dar a luz a una estrella danzante. Porque el caos no era el enemigo. El caos fue el suelo fértil. Fue lo que me obligó a buscar, a moverme, a intentar.
+Hoy fue un salto, invisible para el mundo pero gigantesco para mí, porque solo yo sé lo que costaron estos años, solo yo sé cuántos amaneceres fueron castigo, cuántas noches enteras pasé deseando apagarme. Y por eso este momento me sabe como me sabe, porque nadie más estuvo adentro de mi cuerpo temblando, nadie más cargó mi miedo ni mi cansancio, y hoy todo eso por fin sirvió de algo.
 
-Hoy fue salto. Uno invisible para el mundo, pero gigantesco para mí. Solo yo sé lo que costaron estos años. Solo yo sé cuántos amaneceres fueron castigo. Solo yo sé cuántas noches enteras deseando apagarme.
+No es un punto final, es un paso más, un intento de dejar registro, de soltar esto por si alguien lo lee y le sirve para acordarse de que también se puede salir.
 
-Y por eso este momento me sabe como me sabe. Porque nadie más estuvo en mi cuerpo temblando, nadie más cargó mi miedo ni mi cansancio. Y hoy todo eso sirvió.
-
-No es un punto final. Es un paso más. Un intento de dejar registro. De compartir lo que quizá alguien necesite leer para recordar que también se puede.
-
-Gracias por leerme.
-Gracias por acompañarme.
-Gracias por estar.
-
-Estoy feliz.`,
+Así que gracias, de verdad, por leerme y por acompañarme y por estar, y ya, no tengo más que decir, solo que hoy estoy feliz y quería que quedara escrito antes de que se me olvide cómo se siente.`,
     image: "/images/pieces/caos-estrella-danzante.svg",
   },
 ];
