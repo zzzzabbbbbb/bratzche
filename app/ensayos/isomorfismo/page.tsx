@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import Navigation from "@/components/Navigation";
+import References from "@/components/References";
+import type { Reference } from "@/lib/pieces";
 import MathEquation from "./MathEquation";
 import styles from "./page.module.css";
 import "katex/dist/katex.min.css";
@@ -324,6 +326,51 @@ const INTRO_META = {
   title: "isomorfismo",
   tags: ["fisica-cuantica", "budismo", "estructura", "godel"],
 } as const;
+
+const REFERENCIAS: Reference[] = [
+  {
+    author: "P. Benacerraf",
+    title: "What numbers could not be",
+    year: "1965",
+    source: "The Philosophical Review, 74(1), 47–73",
+  },
+  {
+    author: "F. Capra",
+    title: "The Tao of physics",
+    year: "1975",
+    source: "Shambhala",
+  },
+  {
+    author: "J. Ladyman, D. Ross",
+    title: "Every Thing Must Go: Metaphysics Naturalized",
+    year: "2007",
+    source: "Oxford University Press",
+  },
+  {
+    author: "H. R. Maturana, F. J. Varela",
+    title: "De máquinas y seres vivos: Autopoiesis, la organización de lo vivo",
+    year: "1973",
+    source: "Editorial Universitaria",
+  },
+  {
+    author: "Nāgārjuna (trad. J. L. Garfield)",
+    title: "The Fundamental Wisdom of the Middle Way: Mūlamadhyamakakārikā",
+    year: "c. s. II / 1995",
+    source: "Oxford University Press",
+  },
+  {
+    author: "F. de Saussure (trad. A. Alonso)",
+    title: "Curso de lingüística general",
+    year: "1916 / 1945",
+    source: "Losada",
+  },
+  {
+    author: "F. J. Varela, E. Thompson, E. Rosch",
+    title: "The Embodied Mind: Cognitive Science and Human Experience",
+    year: "1991",
+    source: "MIT Press",
+  },
+];
 
 const initialProgress: Record<SectionId, number> = {
   i: 0,
@@ -1363,6 +1410,8 @@ export default function IsomorfismoPage() {
           })}
 
           <div className={styles.aftermath} />
+
+          <References items={REFERENCIAS} preliminary />
 
           <nav
             className="mt-24 pt-8 border-t border-gris-oscuro flex justify-between items-start"
