@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import Navigation from "@/components/Navigation";
+import References from "@/components/References";
+import type { Reference } from "@/lib/pieces";
 import MathEquation from "./MathEquation";
 import styles from "./page.module.css";
 import "katex/dist/katex.min.css";
@@ -175,6 +177,79 @@ const SECTIONS: EssaySection[] = [
       "Solo el mapa desintegrándose.",
       "Solo el ojo, adentro del ojo, intentando verse.",
     ],
+  },
+];
+
+const REFERENCIAS: Reference[] = [
+  {
+    author: "J. L. Borges",
+    title: "Del rigor en la ciencia",
+    year: "1960",
+    source: "En El hacedor. Emecé",
+  },
+  {
+    author: "K. Gödel",
+    title:
+      "Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I",
+    year: "1931",
+    source: "Monatshefte für Mathematik und Physik, 38, 173–198",
+  },
+  {
+    author: "D. R. Hofstadter",
+    title: "Gödel, Escher, Bach: An Eternal Golden Braid",
+    year: "1979",
+    source: "Basic Books",
+  },
+  {
+    author: "D. R. Hofstadter",
+    title: "I Am a Strange Loop",
+    year: "2007",
+    source: "Basic Books",
+  },
+  {
+    author: "H. R. Maturana, F. J. Varela",
+    title: "De máquinas y seres vivos: Autopoiesis, la organización de lo vivo",
+    year: "1973",
+    source: "Editorial Universitaria",
+  },
+  {
+    author: "R. Penrose",
+    title: "The role of aesthetics in pure and applied mathematical research",
+    year: "1974",
+    source: "Bulletin of the Institute of Mathematics and its Applications, 10, 266–271",
+  },
+  {
+    author: "D. Shechtman, I. Blech, D. Gratias, J. W. Cahn",
+    title:
+      "Metallic phase with long-range orientational order and no translational symmetry",
+    year: "1984",
+    source: "Physical Review Letters, 53(20), 1951–1953",
+  },
+  {
+    author: "A. Tarski",
+    title: "The semantic conception of truth and the foundations of semantics",
+    year: "1944",
+    source: "Philosophy and Phenomenological Research, 4(3), 341–376",
+  },
+  {
+    author: "J. A. Wheeler",
+    title: "Law without law",
+    year: "1983",
+    source:
+      "En Quantum Theory and Measurement (J. A. Wheeler & W. H. Zurek, Eds.). Princeton University Press",
+  },
+  {
+    author: "J. A. Wheeler",
+    title: "Information, physics, quantum: The search for links",
+    year: "1990",
+    source:
+      "En Complexity, Entropy, and the Physics of Information (W. H. Zurek, Ed.). Addison-Wesley",
+  },
+  {
+    author: "E. P. Wigner",
+    title: "The unreasonable effectiveness of mathematics in the natural sciences",
+    year: "1960",
+    source: "Communications on Pure and Applied Mathematics, 13(1), 1–14",
   },
 ];
 
@@ -1242,6 +1317,8 @@ export default function AutorreferenciaPage() {
               </Fragment>
             );
           })}
+
+          <References items={REFERENCIAS} preliminary />
 
           <div className={styles.aftermath} />
 

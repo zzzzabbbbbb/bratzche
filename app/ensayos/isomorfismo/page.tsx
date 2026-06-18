@@ -1409,6 +1409,8 @@ export default function IsomorfismoPage() {
             );
           })}
 
+          <References items={REFERENCIAS} preliminary />
+
           <div className={styles.aftermath} />
 
           <References items={REFERENCIAS} preliminary />
