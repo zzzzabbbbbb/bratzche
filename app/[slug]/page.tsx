@@ -68,6 +68,26 @@ export default async function PiecePage({
             </div>
           </header>
 
+          <div className="mb-16 md:mb-20 max-w-2xl space-y-10">
+            {piece.epigraphs.map((line, i) => {
+              const isQuote = line.startsWith('"') || line.startsWith("“");
+              const isQuestion = line.endsWith("?");
+              return (
+                <p
+                  key={i}
+                  className={`
+                    leading-[1.6]
+                    ${isQuestion ? "text-xl md:text-2xl font-bold text-blanco" : ""}
+                    ${isQuote && !isQuestion ? "text-base md:text-lg italic text-gris" : ""}
+                    ${!isQuote && !isQuestion ? "text-sm md:text-base text-gris/70" : ""}
+                  `}
+                >
+                  {line}
+                </p>
+              );
+            })}
+          </div>
+
           <section className="mb-16">
             {piece.image && (
               <div className="mb-10 border border-gris-oscuro bg-negro p-3 md:p-4">
@@ -123,28 +143,8 @@ export default async function PiecePage({
           )}
 
           <div className="mt-16 pt-12 border-t border-gris-oscuro">
-            <div className="max-w-2xl space-y-10">
-              {piece.epigraphs.map((line, i) => {
-                const isQuote = line.startsWith('"') || line.startsWith('"');
-                const isQuestion = line.endsWith("?");
-                return (
-                  <p
-                    key={i}
-                    className={`
-                      leading-[1.6]
-                      ${isQuestion ? "text-xl md:text-2xl font-bold text-blanco" : ""}
-                      ${isQuote && !isQuestion ? "text-base md:text-lg italic text-gris" : ""}
-                      ${!isQuote && !isQuestion ? "text-sm md:text-base text-gris/70" : ""}
-                    `}
-                  >
-                    {line}
-                  </p>
-                );
-              })}
-            </div>
-
-            <div className="mt-16 max-w-2xl space-y-6">
-              <p className="text-[0.65rem] tracking-wide text-gris-oscuro mb-6">
+            <div className="max-w-2xl space-y-6">
+              <p className="text-xl md:text-2xl font-bold text-blanco mb-6 leading-[1.6]">
                 del ensayo
               </p>
               {piece.content
