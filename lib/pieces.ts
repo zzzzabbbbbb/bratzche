@@ -91,7 +91,7 @@ Nosotros, como la ola, insistimos en la separación, dibujamos bordes donde no l
 Nagarjuna escribió que no hay diferencia alguna entre samsara y nirvana, y el físico diría que no hay diferencia alguna entre la partícula y el campo, la misma cosa vista con distinta resolución.
 
 La fluctuación no es anomalía, es la naturaleza de lo que hay, y lo que hay no es cosa, es verbo.`,
-    pdf: "/pdfs/fluctuacion.pdf",
+    pdf: "/pdfs/fluctuacion-rev.pdf",
   },
   {
     slug: "topologia-del-deseo",
