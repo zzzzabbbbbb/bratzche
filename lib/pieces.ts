@@ -12,6 +12,33 @@ export interface Piece {
 
 export const pieces: Piece[] = [
   {
+    slug: "fluctuacion",
+    title: "Fluctuación",
+    date: "2025-04-01",
+    tags: ["fisica", "fisica-cuantica", "budismo", "campos"],
+    excerpt: "La ola, tan ingenua, queriendo saberse distinta al mar.",
+    epigraphs: [
+      "\"La forma es vacío, el vacío es forma.\" — Sutra del Corazón",
+      "El vacío cuántico contiene más energía que toda la materia visible del universo.",
+      "¿Eres la ola o eres el mar fingiendo que olvidó?",
+      "Nagarjuna: todo lo que surge dependientemente es vacío, todo lo que es vacío surge dependientemente.",
+    ],
+    content: `La ola, tan ingenua, queriendo saberse distinta al mar.
+
+En teoría cuántica de campos el vacío no está vacío, fluctúa, partículas virtuales que aparecen y desaparecen en escalas de tiempo tan breves que desafían la medición pero no la realidad, y aun siendo el estado de mínima energía está lleno de actividad.
+
+Los budistas llegaron a lo mismo hace veinticinco siglos con otro vocabulario, śūnyatā, vacuidad, que no es la nada como ausencia sino la nada como potencialidad infinita, porque todo surge dependientemente y nada existe por sí mismo y sin embargo, y esto es lo crucial, todo aparece.
+
+La fluctuación cuántica y el surgimiento dependiente no son metáforas una de la otra, comparten la forma, una realidad sin sustancia fija que es proceso puro y nada más.
+
+Nosotros, como la ola, insistimos en la separación, dibujamos bordes donde no los hay y nombramos las cosas para fijarlas y terminamos confundiendo el nombre con la cosa, pero el campo no conoce bordes, y la función de onda no colapsa en una partícula porque la partícula sea real sino que colapsa en nuestros registros porque medir es obligar al campo a responder en sustantivo.
+
+Nagarjuna escribió que no hay diferencia alguna entre samsara y nirvana, y el físico diría que no hay diferencia alguna entre la partícula y el campo, la misma cosa vista con distinta resolución.
+
+La fluctuación no es anomalía, es la naturaleza de lo que hay, y lo que hay no es cosa, es verbo.`,
+    pdf: "/pdfs/fluctuacion-rev.pdf",
+  },
+  {
     slug: "irrelevancia",
     title: "Irrelevancia",
     date: "2025-02-22",
@@ -65,33 +92,6 @@ Cuando alguien dice "yo soy así, sin filtros", está ejecutando la performance 
 
 No la verdad como correspondencia con un hecho. La verdad como proceso. Como movimiento perpetuo entre lo que mostramos y lo que ocultamos, sabiendo que ambos gestos son igualmente constructivos, igualmente ficticios, igualmente necesarios.`,
     pdf: "/pdfs/mascara.pdf",
-  },
-  {
-    slug: "fluctuacion",
-    title: "Fluctuación",
-    date: "2025-04-01",
-    tags: ["fisica", "fisica-cuantica", "budismo", "campos"],
-    excerpt: "La ola, tan ingenua, queriendo saberse distinta al mar.",
-    epigraphs: [
-      "\"La forma es vacío, el vacío es forma.\" — Sutra del Corazón",
-      "El vacío cuántico contiene más energía que toda la materia visible del universo.",
-      "¿Eres la ola o eres el mar fingiendo que olvidó?",
-      "Nagarjuna: todo lo que surge dependientemente es vacío, todo lo que es vacío surge dependientemente.",
-    ],
-    content: `La ola, tan ingenua, queriendo saberse distinta al mar.
-
-En teoría cuántica de campos el vacío no está vacío, fluctúa, partículas virtuales que aparecen y desaparecen en escalas de tiempo tan breves que desafían la medición pero no la realidad, y aun siendo el estado de mínima energía está lleno de actividad.
-
-Los budistas llegaron a lo mismo hace veinticinco siglos con otro vocabulario, śūnyatā, vacuidad, que no es la nada como ausencia sino la nada como potencialidad infinita, porque todo surge dependientemente y nada existe por sí mismo y sin embargo, y esto es lo crucial, todo aparece.
-
-La fluctuación cuántica y el surgimiento dependiente no son metáforas una de la otra, comparten la forma, una realidad sin sustancia fija que es proceso puro y nada más.
-
-Nosotros, como la ola, insistimos en la separación, dibujamos bordes donde no los hay y nombramos las cosas para fijarlas y terminamos confundiendo el nombre con la cosa, pero el campo no conoce bordes, y la función de onda no colapsa en una partícula porque la partícula sea real sino que colapsa en nuestros registros porque medir es obligar al campo a responder en sustantivo.
-
-Nagarjuna escribió que no hay diferencia alguna entre samsara y nirvana, y el físico diría que no hay diferencia alguna entre la partícula y el campo, la misma cosa vista con distinta resolución.
-
-La fluctuación no es anomalía, es la naturaleza de lo que hay, y lo que hay no es cosa, es verbo.`,
-    pdf: "/pdfs/fluctuacion-rev.pdf",
   },
   {
     slug: "topologia-del-deseo",
