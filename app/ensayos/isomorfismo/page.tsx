@@ -1409,9 +1409,9 @@ export default function IsomorfismoPage() {
             );
           })}
 
-          <div className={styles.aftermath} />
-
           <References items={REFERENCIAS} preliminary />
+
+          <div className={styles.aftermath} />
 
           <nav
             className="mt-24 pt-8 border-t border-gris-oscuro flex justify-between items-start"
