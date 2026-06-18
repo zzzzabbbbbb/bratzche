@@ -1141,11 +1141,9 @@
   0%,
   100% {
     opacity: 0.92;
-    letter-spacing: -0.01em;
   }
   50% {
     opacity: 1;
-    letter-spacing: 0.004em;
   }
 }
 
@@ -1238,11 +1236,9 @@
 @keyframes bedrockConverge {
   0%,
   100% {
-    letter-spacing: 0.035em;
     transform: translateY(0);
   }
   46% {
-    letter-spacing: -0.018em;
     transform: translateY(0.04em);
   }
   52% {
@@ -1542,5 +1538,13 @@
 
   .digGalleryDouble {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    animation: none !important;
   }
 }
