@@ -1,3 +1,11 @@
+export interface Reference {
+  author: string;
+  title: string;
+  year?: string;
+  source?: string;
+  url?: string;
+}
+
 export interface Piece {
   slug: string;
   title: string;
@@ -8,6 +16,7 @@ export interface Piece {
   content: string;
   pdf?: string;
   image?: string;
+  references?: Reference[];
 }
 
 export const pieces: Piece[] = [
